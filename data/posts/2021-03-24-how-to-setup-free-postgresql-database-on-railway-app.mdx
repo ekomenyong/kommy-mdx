@@ -1,0 +1,133 @@
+---
+title: 'How to Setup a Free PostgreSQL Database on Railway'
+seoTitle: ''
+seoDescription: 'I recently discovered Railway, an app infrastructure platform. Setup a free PostgreSQL database to use in your next project.'
+summary: 'I recently discovered Railway, an app infrastructure platform. Setup a free PostgreSQL database to use in your next project.'
+tags: ['next.js', 'railyway', 'PostgreSQL', 'heroku']
+lastmod: '03-24-2021'
+publishedAt: '03-24-2021'
+coverImage: '/images/covers/cover-how-to-setup-free-postgresql-database-on-railway-app.jpg'
+---
+
+[Railway](https://railway.app/) offers a free plan for hosting databases including PostgreSQL, MongoDB, and Redis. When you need to get started quickly with a hosted database for a new project or prototype, Railway is extremely valuable.
+
+If you've been using Heroku as your cloud app platform for PostgreSQL, MongoDB, or Redis databases, I highly recommend trying Railway in your next small project instead.
+
+## Railway: a Heroku alternative
+
+If you're like me, you've grown up hearing something like, “If it ain't broke, then don't fix it.” So why would someone switch from Heroku to a new or unknown platform? Is something wrong with Heroku? Absolutely not!
+
+[Heroku](https://www.heroku.com/) is a fully managed cloud application platform owned by [Salesforce](https://www.salesforce.com/). Developers, teams, and large companies use Heroku to deploy, manage, and scale apps. Heroku is not going anywhere anytime soon.
+
+New and seasoned developers alike utilize their free tier to spin up PostgreSQL and other databases. In my own self-taught modern web development journey, I have used Heroku to build small apps and projects for learning and hobby purposes.
+
+All that being said, we still need the answer to, “Why would someone switch from Heroku to Railway?”
+
+### No more sleeping apps
+
+When you need a hosted PostgreSQL database for your portfolio or hobby developer projects, Heroku is a great go-to tool for this. However, if you are using the Free tier version of their products, your [apps will go to sleep](https://blog.heroku.com/app_sleeping_on_heroku) if they don't receive any traffic after 1 hour.
+
+This means that you app will need to “wake up” the next time it is accessed. This causes a delay that can be bothersome or annoying to the person who makes that first request. Though, all requests after that will perform normally.
+
+Heroku does provide an option to upgrade your account to keep your apps from sleeping, but when working on solo or hobby projects, you may not be able to justify this cost.
+
+### Resetting credentials
+
+Periodically, Heroku will [change the Heroku Postgres credentials](https://help.heroku.com/SMVK5PMS/why-have-my-heroku-postgres-credentials-changed). If you have copy and pasted those credentials elsewhere or hardcoded them into your app, it will likely cause issues until you update them.
+
+This can be resolved by visiting the app Settings page in Heroku or running the `heroku config` command via the CLI to get the new credentials. Though the credentials are rolled for good reason, it can still be something that annoys developers.
+
+## Setup a PostgreSQL database on Railway
+
+Enter stage left: [Railway](https://railway.app/). Railway has a beautiful interface and a modern feel you're going to love using. They also have a generous free tier that is perfect for hobby or solo developers.
+
+The next time you are working on a side project or following a tutorial that calls for running up a PostgreSQL database, consider trying Railway instead of Heroku.
+
+Here's how to setup a free PostgreSQL database using Railway.
+
+### 1. Sign up for a Railway account
+
+<Image
+  alt="The homepage for Railway"
+  src="/images/content/railway-homepage-screenshot.jpg"
+  width={1200}
+  height={528}
+  priority
+/>
+<p className="text-center text-sm italic">The homepage for Railway.</p>
+
+Direct your browser to [https://railway.app](https://railway.app/) and click **Login** or **Get Started** to create an account or sign back into your dashboard.
+
+You can use your Github account to sign in or your email address. Railway will send you a magic link to your inbox.
+
+If you sign up with email, you can still connect your Github account for CI/CD purposes.
+
+### 2. Create a new project and add a database
+
+When you follow the link from your email or log in, you will presented with an empty dashboard the option to create your first project or read their documentation.
+
+Click on **Create First Project** to add a new project to your dashboard. Your screen should look a little something like this:
+
+<Image
+  alt="Screenshot of new Railway project options"
+  src="/images/content/new-railway-project-screenshot.jpg"
+  width={1200}
+  height={730}
+  priority
+/>
+<p className="text-center text-sm italic">
+  Options for starting a new project on Railway.
+</p>
+
+Click on **Provision PostgreSQL**. Railway will begin spinning up your database. Once you're done, you will be ready to view credentials and connect your frontend to your database.
+
+### 3. Access your database credentials
+
+Once your project is set up, your screen will show your project dashboard. If you only need the database URL to connect to your PostgreSQL client, you can click on **PostgresSQL** in the sidebar navigation and then click the **Connect** tab as shown in the screenshot below.
+
+<Image
+  alt="View PostgreSQL database credentials in your dashboard"
+  src="/images/content/railway-db-credentials.jpg"
+  width={1200}
+  height={665}
+  priority
+/>
+<p className="text-center text-sm italic">
+  Easily copy the database URL from your project dashboard.
+</p>
+
+You can view full database credentials by navigating to the **Variables** section of your Project Dashboard and click on **PostgreSQL**. This will open an accordion showing all of your database credentials.
+
+You can then reveal or copy your credentials by environment, and create your own custom variables as needed.
+
+<Image
+  alt="View full database credentials with Railway"
+  src="/images/content/full-database-credentials-from-railway.jpg"
+  width={1200}
+  height={593}
+  priority
+/>
+<p className="text-center text-sm italic">
+  View your full PostgreSQL database credentials.
+</p>
+
+Visit the **Settings** section (located on the sidebar navigation) to get and manage other details about your Railway project including a Project ID, environments, API tokens, and integrations.
+
+## Trying Railway for your next project
+
+<p>
+  With Railway's Free Plan, you can have up to 3 projects, with limits of 2
+  plugins and environments per project. You can learn more about [Railway's
+  other pricing plans and features](https://railway.app/pricing) on their
+  website.
+</p>
+
+### Integrating Railway with Next.js applications
+
+For any fellow Next.js and/or Vercel enthusiasts, [Railway has a Vercel integration](https://docs.railway.app/deployment/serverless) for serverless deployment. You can also check out [Railway's Next.js Prisma starter repository](https://github.com/railwayapp/starters/tree/master/examples/nextjs-prisma) to learn more about integration.
+
+### Integrating Railway with everything else
+
+For the rest of you developers, they have a great [example repository of Railway starters](https://github.com/railwayapp/starters/tree/master/examples) for various app builds including Blitz.js, Deno, Hasura, Flask, Express, and more.
+
+Check out their website or read their [documentation](https://docs.railway.app/getting-started) to learn more.

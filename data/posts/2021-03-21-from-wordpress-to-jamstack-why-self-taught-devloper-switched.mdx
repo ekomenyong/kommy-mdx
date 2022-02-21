@@ -1,0 +1,143 @@
+---
+title: 'From Wordpress to Jamstack: Why A Self-taught Dev Made the Switch'
+seoTitle: ''
+seoDescription: "A couple years ago, I thought I was going to be a WordPress developer. Here's why I switched to the Jamstack instead."
+summary: "A couple years ago, I thought I was going to be a WordPress developer. Here's why I switched to the Jamstack instead."
+tags: ['jamstack', 'wordpress', 'personal']
+lastmod: '03-21-2021'
+publishedAt: '03-21-2021'
+coverImage: '/images/covers/cover-from-wordpress-to-jamstack-why-self-taught-devloper-switched.jpg'
+---
+
+I'm only 2 years into my journey of self-learning modern web development and have much more to learn. However, before I fell in love with Next.js and the Jamstack ecosystem, I learned custom WordPress theme development.
+
+I wrote this post to explain how I got started in WordPress developement and why I decided to learn Jamstack development instead.
+
+## An SEO Becomes Interested in WordPress
+
+In the first few years of my careers as a professional digital marketer, I would make edits to the WordPress websites for clients or companies I worked for.
+
+As I progressed in my career and specialized in SEO, I became much more interested in optimizing WordPress sites. This was due to [Mobilegeddon](https://en.wikipedia.org/wiki/Mobilegeddon), or Google's April 2015 Mobile-Friendly search engine update that rocked the SEO world and drastically affected site traffic and rankings across the web.
+
+That experience forced me to become much more familiar with WordPress, web performance, and web development in general.
+
+## Becoming a WordPress Wrangler
+
+I had been building barebones websites since the days of AOL dial-up, so by the time I was interested in building my own WordPress solutions, I had a solid foundation in HTML and CSS. I wanted to build mobile-responsive, SEO-friendly, and fast-loading WordPress themes.
+
+In my off time, I was heavily studying jQuery and the [WordPress Codex for Theme Development](https://codex.wordpress.org/Theme_Development). I watched _hundreds_ of YouTube videos and bought a couple of Udemy courses to learn custom theme development the _right_ way.
+
+I knew if I wanted to develop custom WordPress sites professionally, I would need to develop a proper workflow to make that process seamless.
+
+### WordPress Development Workflow
+
+I had been through enough terrible website migration experiences as an SEO to know the importance of testing changes before pushing them live to a website.
+
+Through research and trial and error, I was very proud of my WordPress development workflow and plugin selection. Below I listed the tools for modern WP development, but you can see an [archived repository of an example theme here](https://github.com/ekomenyong/karmic).
+
+With this combination of tools and plugins, I was able to build websites that loaded much faster than the client sites built by real WordPress developers.
+
+<Image
+  alt="Modern WordPress Development Tools"
+  src="/images/content/wordpress-development-tools.jpg"
+  width={1200}
+  height={675}
+  priority
+/>
+<p className="text-center text-sm italic">
+  The modern WordPress tools and plugins I was using in 2018.
+</p>
+
+- **[Local](https://localwp.com/)** for hassle-free local WordPress Development
+- **[Gulp](https://gulpjs.com/)** and **[Babel](https://babeljs.io/)** to handle compiling bundling my JS and Sass, and include auto prefixing, and inlining critical CSS
+- **[‌Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/)** plugin to easily create custom fields for client templates and custom theme option/settings pages
+- **‌[Ninja Forms](https://ninjaforms.com/)** plugin because it has a great no-code interface and only loads scripts on a webpage if it has a form
+- **‌[SecuPress](https://secupress.me/)** plugin because you get the same features for about half the price of Sucuri
+- My own starter theme based on **[Underscores](https://underscores.me/)**
+- **[RankMath](https://rankmath.com/)** because you get more bang for your buck and had less bloat than YoastSEO
+- **[DigitalOcean](https://m.do.co/c/d7c75b0de054)** and **[RunCloud](https://runcloud.io/)** to host and manage freelance client websites
+
+## React and the Jamstack Ecosystem
+
+After about a year of learning custom WordPress theme development, I still had some issues with WordPress and the overall developer experience. I was going to being learning plugin development but had just finished a Javascript course and started learning React.
+
+I loved the idea of building reusable components that you could plug-in where and when you needed. It also aligned with the changes WordPress was making at that time, implementing the Gutenberg block editor.
+
+I saw React (and the greater Jamstack ecosystem) as an opportunity to get ahead of the curve in web development. If I could learn the skills before everyone started using these technologies, I would have the opportunity to pivot my career.
+
+### SEO-Friendly Websites with Next.js
+
+As an SEO professional wanting to become a web developer, I know that my SEO experience would give me a unique skill most developers knew nothing about. I discovered Next.js when searching how to create SEO-friendly React sites.
+
+With the release of the `create-next-app`, I found myself in awe of the zero-config, yet optimized site. With a few number of `npm` packages, I could still have my SEO-friendly development setup.
+
+But I still needed a CMS in order to create websites for clients needing to make frequent changes without a developer. I discovered that there are many CMSes available for Next.js (and other Jamstack) developers.
+
+## The Concept of Headless CMS
+
+A “headless” or “API-first” CMS is a more flexible content management solution for modern websites. Headless CMS systems differ from a traditional, or monolithic CMS, like WordPress because the front-end is separate than the backend.
+
+At its core, a headless, or API-first CMS is a database (backend) that makes content (data) available through an API.
+
+The first headless CMS I tried was [DatoCMS](https://www.datocms.com/). I had a wonderful experience building my personal website with it. I won't say it was _simple_, but I got everything working with no issue on my first try integrating a headless CMS and my first time implementing an API.
+
+<Image
+  alt="A screenshot of Sanity Studio"
+  src="/images/content/sanity-studio-screenshot.png"
+  width={1200}
+  height={675}
+  priority
+/>
+<p className="text-center text-sm italic">A screenshot of Sanity Studio</p>
+
+### Exploring Sanity.io
+
+The next time I rebuilt my [personal site using the Jamstack](https://github.com/ekomenyong/kommysanity), I chose [Sanity](https://www.sanity.io/) as my CMS of choice. The reasons I chose Sanity include:
+
+- A [generous free tier that](https://www.sanity.io/pricing) also allows you to pay for limit overages (unlike the free tiers of GraphCMS or DatoCMS)
+- [Sanity Studio](https://www.sanity.io/studio), their open-source, fully customizable, CMS backend built with React.js
+- [Resources, plugins](https://www.sanity.io/plugins), [Sanity starter files](https://www.sanity.io/starters), and [thorough documentation](https://www.sanity.io/docs) for developers
+
+Though my personal website is currently [built using markdown via MDX](https://ekomenyong.com/posts/rebuilding-blog-nextjs-mdx-tailwindcss), I do plan to revisit Sanity as my CMS of choice for more complex projects.
+
+## Developer benefits of the Jamstack
+
+As a self-taught developer with the goal of being able to build anything a no-code editor can do, the Jamstack has changed my self-learn journey. I'm know learning new web technologies that are, quite frankly, in their infancy.
+
+If you're a developer that's been listening to the myths, I want to tell you that you can absolutely create dynamic content and scalable, full stack applications on the Jamstack.
+
+Even if you are not in a position to convince your company or WordPress [clients to switch to Jamstack](https://bejamas.io/blog/jamstack-for-clients/), I suggest trying it in your projects for 4 main of reasons:
+
+### Secure Websites
+
+Are you really a WordPress developer, or content manager, if your site has never been victim of an attack? The jamstack architecture has security benefits because you serve pre-generated, or static pages and content.
+
+Store your code with git and let 3rd party services handle your databases and servers. The separation of frontend and backend processes make it much harder to find and exploit vulnerabilities.
+
+### Performance, Scaling, and Hosting
+
+Serving pre-built static files and assets hosted from a CDN means that you can have dynamic content and blazing-fast loading speeds too.
+
+When it comes time to scale your website or application, you can serve as much content as necessary from a CDN, and maintain a positive user experience on your site.
+
+For more content-heavy or highly-trafficked web applications, pay for what need in terms of hosting, storage, bandwidth, and requests.
+
+### Better Developer Experience (DX)
+
+Jamstack websites and applications can be built with a wide variety of tools. As more people adopt these modern web development methods, there are more tools, services, and integrations available.
+
+Instead of bloated plugins with more features than you need, build web applications they way you like with [a thriving ecosystem of Jamstack services](https://bejamas.io/blog/jamstack-ecosystem/).
+
+Store all of your code in git so you and your team and work together. Developers with the right skills can find the right tools to build projects effectively and efficiently.
+
+### Host simple websites for free
+
+I know that nothing in this life is free but we all _love_ free. If you have a small or fairly simple website, you could potentially build, update, and host it for free. The only thing it would cost is the time (to develop the site and create the content).
+
+Here's an example of a free build I used with the previous build of my website. Note that [Sanity includes generous usage limits](https://www.sanity.io/pricing) for their Free plan.
+
+- **Framework:** React
+- **Static Site Generator:** Next.js
+- **CMS:** Sanity.io (Free Tier)
+- **Hosting:** Vercel (Free Hobby Tier)
+- **Repository:** Github

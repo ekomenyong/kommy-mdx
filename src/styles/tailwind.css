@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@import './typography.css';
+@tailwind utilities;
+
+.task-list-item::before {
+  @apply hidden;
+}
+
+.task-list-item {
+  @apply list-none;
+}
+
+.footnotes {
+  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
+}
+
+.csl-entry {
+  @apply my-5;
+}
+
+/* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.link-underline {
+  position: relative;
+  padding-bottom: 2px;
+  @apply text-gray-800 dark:text-gray-300;
+}
+.link-underline::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  @apply bg-gray-800 dark:bg-gray-300;
+  transform-origin: bottom right;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.link-underline:hover::before {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
+
+.jelly:hover {
+  animation: jelly 0.5s;
+}
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.05);
+  }
+  50% {
+    transform: scale(1.05, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}

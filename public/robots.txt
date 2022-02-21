@@ -1,0 +1,4 @@
+
+User-agent: *
+Disallow: /_next/
+Sitemap: https://ekomenyong.com/sitemap.xml
