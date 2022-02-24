@@ -15,31 +15,31 @@ import { allPosts } from 'contentlayer/generated';
 import { pick } from '@/utils/contentlayer';
 import { RiArrowRightLine } from 'react-icons/ri';
 
-const projects = [
-  {
-    title: 'Hyper Ethos',
-    description:
-      'Web design and development for an independent creative collective',
-    imageUrl: '/images/event.jpg',
-    slug: '#',
-  },
-  {
-    title: 'Hyper Ethos',
-    description:
-      'Web design and development for an independent creative collective',
-    imageUrl: '/images/event.jpg',
-    slug: '#',
-  },
-  {
-    title: 'Hyper Ethos',
-    description:
-      'Web design and development for an independent creative collective',
-    imageUrl: '/images/event.jpg',
-    slug: '#',
-  },
-];
+// const projects = [
+//   {
+//     title: 'Hyper Ethos',
+//     description:
+//       'Web design and development for an independent creative collective',
+//     imageUrl: '/images/event.jpg',
+//     slug: '#',
+//   },
+//   {
+//     title: 'Hyper Ethos',
+//     description:
+//       'Web design and development for an independent creative collective',
+//     imageUrl: '/images/event.jpg',
+//     slug: '#',
+//   },
+//   {
+//     title: 'Hyper Ethos',
+//     description:
+//       'Web design and development for an independent creative collective',
+//     imageUrl: '/images/event.jpg',
+//     slug: '#',
+//   },
+// ];
 
-const MAX_PROJECT_DISPLAY = 3;
+// const MAX_PROJECT_DISPLAY = 3;
 const MAX_DISPLAY = 5;
 
 const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
