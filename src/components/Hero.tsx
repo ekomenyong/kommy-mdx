@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { RiArrowRightLine } from 'react-icons/ri';
 import KommyLink from './Link';
 import SectionContainer from './SectionContainer';
 
@@ -28,15 +29,16 @@ export default function Hero() {
               alt="Headshot of Ekom Enyong"
               objectFit="cover"
               objectPosition="center center"
-              className="rounded-full"
+              className="rounded-full animate-spin-slow"
             />
           </div>
         </div>
         <KommyLink
           href="/about"
-          className="flex flex-row items-center justify-center w-full px-4 py-2 text-base font-medium tracking-wider text-white uppercase border border-transparent rounded shadow-sm hover:underline dark:border-white dark:hover:bg-transparent sm:max-w-lg lg:max-w-sm"
+          className="flex flex-row items-center justify-center w-full px-4 py-2 text-base font-medium tracking-wider text-white uppercase border border-transparent rounded shadow-sm bg-primary-600 hover:underline dark:border-primary-600 dark:hover:bg-transparent sm:max-w-lg lg:max-w-sm"
         >
-          Let's more about me &rarr;
+          Learn more about me
+          <RiArrowRightLine className="w-6 h-6 ml-4" />
         </KommyLink>
       </div>
       <hr />

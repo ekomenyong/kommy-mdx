@@ -102,7 +102,7 @@ If your client is working on a [Next.js application](https://nextjs.org/) runnin
 You can create a custom App component and define a reportWebVitals function. You track more than just Web Vitals.
 Check out their docs on [how to measure performance in Next.js](https://nextjs.org/docs/advanced-features/measuring-performance) for more information.
 
-```js:pages/_app.js showLineNumbers
+```js:pages/_app.js {2} showLineNumbers
   export function reportWebVitals(metric) {
     console.log(metric);
   }

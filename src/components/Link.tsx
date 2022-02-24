@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-interface HyperLinkProps {
+interface KommyLinkProps {
   children: React.ReactNode;
   href: string;
   className?: string;
@@ -15,7 +15,7 @@ const KommyLink = ({
   className,
   showIcon = false,
   ...rest
-}: HyperLinkProps) => {
+}: KommyLinkProps) => {
   const isInternalLink = href && href.startsWith('/');
   const isAnchorLink = href && href.startsWith('#');
 

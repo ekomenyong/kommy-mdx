@@ -9,7 +9,7 @@ export default function WebWrapper(props: { children: React.ReactNode }) {
     <>
       <Header />
       <ScrollTop />
-      <main className="mt-24 mb-auto bg-white dark:bg-gray-800">
+      <main className="mt-24 mb-auto bg-white dark:bg-gray-900">
         {children}
       </main>
       <Footer />

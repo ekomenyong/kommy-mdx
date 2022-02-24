@@ -10,6 +10,7 @@ import {
   TableOfContents,
   Tag,
 } from '@/components';
+import { RiArrowLeftLine } from 'react-icons/ri';
 
 import { Post } from 'contentlayer/generated';
 
@@ -28,13 +29,13 @@ export default function PostLayout({
                 <div>
                   <span className="sr-only">Published on</span>
                   <div className="space-x-2 text-lg leading-6 text-gray-500 dark:text-gray-300">
-                    {post.lastmod ? (
-                      <span className="italic">
+                    {post.lastmod && post.lastmod !== post.publishedAt ? (
+                      <span className="">
                         Post updated on{' '}
                         {dayjs(post.lastmod).format('MMMM DD, YYYY')}
                       </span>
                     ) : (
-                      <span className="italic">
+                      <span className="">
                         Published on{' '}
                         {dayjs(post.publishedAt).format('MMMM DD, YYYY')}
                       </span>
@@ -46,7 +47,7 @@ export default function PostLayout({
               </div>
               <div>
                 <PostTitle>{post.title}</PostTitle>
-                <p className="max-w-3xl mx-auto text-xl text-gray-700 dark:text-gray-300">
+                <p className="max-w-2xl mx-auto text-xl italic text-gray-600 dark:text-gray-300">
                   {post.summary}
                 </p>
               </div>
@@ -58,9 +59,10 @@ export default function PostLayout({
           >
             {/* AUTHOR  */}
             <div className="pt-6 pb-8 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-600">
+              <hr className="pt-8 xl:hidden" />
               <span className="sr-only">Author</span>
               <div className="flex flex-col items-start justify-center space-x-0 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
-                <h3 className="text-base font-medium tracking-wide underline uppercase text-primary-600 dark:text-gray-200">
+                <h3 className="text-base font-medium tracking-wide uppercase text-primary-600 dark:text-gray-200">
                   Author info
                 </h3>
                 <div className="flex items-start justify-start mt-6">
@@ -130,14 +132,14 @@ export default function PostLayout({
                 <TableOfContents source={post.body.raw} />
               </div>
               {/* SOCIAL SHARE WIDGET */}
-              <SocialShare title={post.title} />
+              <SocialShare title={post.title} slug={post.slug} />
               <hr />
               <div className="pt-4 xl:pt-8">
                 <KommyLink
                   href="/posts"
-                  className="text-lg font-medium uppercase text-primary-600 hover:underline dark:text-white"
+                  className="flex flex-row items-center justify-start text-lg font-medium uppercase flex-nowrap text-primary-600 hover:underline dark:text-white"
                 >
-                  &larr; Back to the blog
+                  <RiArrowLeftLine className="mr-4" /> Back to all posts
                 </KommyLink>
               </div>
             </aside>

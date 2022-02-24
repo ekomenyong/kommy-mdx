@@ -14,6 +14,7 @@ import {
 } from '@/components';
 import { allPosts } from 'contentlayer/generated';
 import { pick } from '@/utils/contentlayer';
+import { RiArrowRightLine } from 'react-icons/ri';
 
 const projects = [
   {
@@ -73,7 +74,7 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
             href="/projects"
             className="inline-flex items-center justify-center px-4 py-1 mt-8 text-lg font-medium tracking-wider text-white uppercase bg-gray-900 border border-transparent rounded shadow-sm bg-accent whitespace-nowrap hover:underline dark:border-white dark:hover:bg-transparent"
           >
-            View all projects &rarr;
+            View all projects <RiArrowRightLine className="w-6 h-6 ml-4" />
           </KommyLink>
         </div>
         <hr />
@@ -99,7 +100,7 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 <p className="text-sm italic text-gray-500 basis-1/6 dark:text-gray-300">
                   <span>{dayjs(post.publishedAt).format('MMMM DD, YYYY')}</span>
                 </p>
-                <div className="max-w-4xl">
+                <div className="max-w-3xl">
                   <KommyLink
                     href={`/posts/${post.slug}`}
                     className="block mt-2 "
@@ -122,10 +123,10 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   </p>
                   <KommyLink
                     href={`/posts/${post.slug}`}
-                    className="text-base font-medium text-gray-800 uppercase hover:underline dark:text-gray-300"
+                    className="inline-flex items-center justify-start text-base font-medium text-gray-800 uppercase hover:underline dark:text-gray-300"
                     aria-label={`Read "${post.title}"`}
                   >
-                    Read more &rarr;
+                    Read more <RiArrowRightLine className="w-6 h-6 ml-2" />
                   </KommyLink>
                 </div>
               </div>
@@ -135,7 +136,7 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
             href="/posts"
             className="inline-flex items-center justify-center px-4 py-1 mt-8 text-lg font-medium tracking-wider text-white uppercase bg-gray-900 border border-transparent rounded shadow-sm bg-accent whitespace-nowrap hover:underline dark:border-white dark:hover:bg-transparent"
           >
-            View All Posts &rarr;
+            View All Posts <RiArrowRightLine className="w-6 h-6 ml-4" />
           </KommyLink>
         </div>
         <hr />

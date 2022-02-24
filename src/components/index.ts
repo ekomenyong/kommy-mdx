@@ -1,6 +1,7 @@
 export { default as Analytics } from './Analytics';
 export { default as Header } from './Header';
 export { default as KommyLink } from './Link';
+export { default as KommyImage } from './KommyImage';
 export { default as SectionContainer } from './SectionContainer';
 export { default as SectionHeader } from './SectionHeader';
 export { default as Tag } from './Tag';

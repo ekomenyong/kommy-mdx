@@ -15,7 +15,7 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className={className} {...rest}>
-      <span className="max-w-lg text-lg italic font-medium tracking-wider text-gray-600 uppercase dark:text-gray-300">
+      <span className="max-w-lg text-lg italic font-medium tracking-wider text-gray-500 uppercase dark:text-gray-300">
         {section}
       </span>
       <h2 className="max-w-2xl mb-4 text-3xl font-medium uppercase lg:w-full lg:text-4xl">

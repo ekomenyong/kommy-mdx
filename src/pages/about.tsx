@@ -13,13 +13,14 @@ import Image from 'next/image';
 const posts = [
   {
     title: '2022 React Developer Tools and Techstack',
-    href: '#',
+    href: '/posts/react-nextjs-developer-tech-stack-tools',
     description:
       "My 2022 design and React development tools I'm currently using. Plus, an exploration of what new tools and skills I'm exploring this year.",
     date: 'Mar 1, 2022',
     datetime: '2023-03-01',
-    imageUrl: '/images/event.jpg',
-    readingTime: '3 min',
+    imageUrl:
+      '/images/covers/cover-react-nextjs-developer-tech-stack-tools.jpg',
+    readingTime: '10 min',
     author: {
       name: 'Ekom Enyong',
       imageUrl: '/images/ekom-enyong-headshot.jpeg',
@@ -35,21 +36,21 @@ const About: NextPage = () => {
       />
       {/* Hero */}
       <SectionContainer>
-        <div className="mx-auto max-w-3xl py-28 text-center">
-          <p className="mb-2 text-xl font-medium uppercase italic tracking-wider text-gray-600 dark:text-gray-300">
+        <div className="max-w-2xl mx-auto text-center py-28">
+          <p className="mb-2 text-xl italic font-medium tracking-wider text-gray-600 uppercase dark:text-gray-300">
             Meet ekom
           </p>
           <h1 className="mb-4 text-4xl font-medium uppercase md:text-5xl lg:text-6xl">
-            I create digital{' '}
-            <span className="font-bold">products and experiences</span> that
-            help <span className="font-normal italic">push us all forward</span>
+            I create{' '}
+            <span className="font-bold"> ethical digital experiences</span> that
+            help <span className="italic font-normal">push us all forward</span>
             .
           </h1>
         </div>
       </SectionContainer>
       {/* About */}
       <SectionContainer>
-        <div className="mb-12 flex flex-col lg:mb-20 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex flex-col mb-12 lg:mb-20 lg:flex-row lg:items-start lg:justify-between">
           <div className="mb-8 md:mb-0">
             <Image
               src="/images/ekom-enyong-headshot.jpeg"
@@ -67,7 +68,7 @@ const About: NextPage = () => {
               During the day, I am the SEO Manager at{' '}
               <KommyLink
                 href="https://patrontechnology.com"
-                className="italic text-primary-600 underline dark:text-gray-200"
+                className="italic underline text-primary-600 dark:text-gray-200"
               >
                 Patron Technology
               </KommyLink>
@@ -91,8 +92,8 @@ const About: NextPage = () => {
       </SectionContainer>
       {/* Tech Stack */}
       <SectionContainer>
-        <div className="my-20 flex flex-col items-center justify-start lg:flex-row lg:items-start lg:justify-between">
-          <div className="lg: mb-12 lg:basis-1/2">
+        <div className="flex flex-col items-center justify-start my-20 lg:flex-row lg:items-start lg:justify-between">
+          <div className="mb-12 lg: lg:basis-1/2">
             <SectionHeader
               section="tools & tech"
               title="I build the web with modern tools and technologies"
@@ -104,7 +105,7 @@ const About: NextPage = () => {
                 and practicing old ones. My basic stack I build digital products
                 with include:
               </p>
-              <div className="prose prose-xl my-4 pl-8 leading-4 dark:prose-dark">
+              <div className="pl-8 my-4 leading-4 prose prose-xl dark:prose-dark">
                 <li>React/Next.js</li>
                 <li>TypeScript</li>
                 <li>Tailwind CSS</li>
@@ -127,19 +128,19 @@ const About: NextPage = () => {
                 >
                   <div className="flex-shrink-0">
                     <Image
-                      className="h-48 w-full object-cover"
+                      className="object-cover w-full h-48"
                       src={post.imageUrl}
                       width={600}
-                      height={300}
+                      height={315}
                       objectFit="cover"
                       objectPosition="bottom center"
                       alt=""
                     />
                   </div>
-                  <div className="flex flex-1 flex-col justify-between bg-white p-6">
+                  <div className="flex flex-col justify-between flex-1 p-6 -mt-2 bg-white">
                     <div className="flex-1">
                       <KommyLink href={post.href} className="mt-2 ">
-                        <p className="text-2xl font-medium uppercase text-gray-800 hover:underline">
+                        <p className="text-2xl font-medium text-gray-800 uppercase hover:underline">
                           {post.title}
                         </p>
                         <p className="mt-2 text-lg text-gray-600">
@@ -147,11 +148,11 @@ const About: NextPage = () => {
                         </p>
                       </KommyLink>
                     </div>
-                    <div className="mt-6 flex items-center">
+                    <div className="flex items-center mt-6">
                       <div className="flex-shrink-0">
                         <span className="sr-only">{post.author.name}</span>
                         <Image
-                          className="h-10 w-10 rounded-full"
+                          className="w-10 h-10 rounded-full"
                           src={post.author.imageUrl}
                           height={40}
                           width={40}
@@ -161,7 +162,7 @@ const About: NextPage = () => {
                         />
                       </div>
                       <div className="ml-3">
-                        <p className="text-sm font-medium uppercase text-gray-800">
+                        <p className="text-sm font-medium text-gray-800 uppercase">
                           {post.author.name}
                         </p>
                         <div className="flex space-x-1 text-sm text-gray-500">

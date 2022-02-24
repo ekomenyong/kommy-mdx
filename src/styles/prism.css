@@ -7,7 +7,7 @@
 
 /* Code title styles */
 .rehype-code-title {
-  @apply rounded-t bg-gray-200 py-3 pb-2 pl-6 font-mono text-sm text-gray-800;
+  @apply rounded-t border border-gray-200 bg-gray-100 py-3 pb-2 pl-6 font-mono text-sm italic text-gray-800;
 }
 
 .rehype-code-title + div > pre {
@@ -32,7 +32,7 @@
 }
 
 .highlight-line {
-  @apply -mx-4 border-l-4 border-primary-500 bg-gray-700 bg-opacity-50;
+  @apply -mx-4 border-l-4 border-rose-600 bg-gray-700 bg-opacity-50;
 }
 
 .line-number::before {

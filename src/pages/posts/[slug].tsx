@@ -18,16 +18,26 @@ export default function SinglePost({ post }: PostProps) {
   return (
     <WebWrapper>
       <NextSeo
-        title={post.seoTitle ? `${post.seoTitle}` : `${post.title}`}
+        title={
+          post.seoTitle && post.seoTitle !== post.title
+            ? `${post.seoTitle}`
+            : `${post.title}`
+        }
         description={
-          post.seoDescription ? `${post.seoDescription}` : `${post.summary}`
+          post.seoDescription && post.seoDescription !== post.summary
+            ? `${post.seoDescription}`
+            : `${post.summary}`
         }
         canonical={`${post.slug}`}
         openGraph={{
-          title: post.seoTitle ? `${post.seoTitle}` : `${post.title}`,
-          description: post.seoDescription
-            ? `${post.seoDescription}`
-            : `${post.summary}`,
+          title:
+            post.seoTitle && post.seoTitle !== post.title
+              ? `${post.seoTitle}`
+              : `${post.title}`,
+          description:
+            post.seoDescription && post.seoDescription !== post.summary
+              ? `${post.seoDescription}`
+              : `${post.summary}`,
           url: `${post.slug}`,
           type: 'article',
           article: {
@@ -45,15 +55,21 @@ export default function SinglePost({ post }: PostProps) {
       />
       <ArticleJsonLd
         url={post.slug}
-        title={post.seoTitle ? `${post.seoTitle}` : `${post.title}`}
-        headline={post.seoTitle ? `${post.seoTitle}` : `${post.title}`}
+        title={
+          post.seoTitle && post.seoTitle !== post.title
+            ? `${post.seoTitle}`
+            : `${post.title}`
+        }
+        headline={`${post.title}`}
         images={[`${post.coverImage}`]}
         datePublished={`${post.publishedAt}`}
         dateModified={`${post.lastmod}`}
         publisherLogo={`${config.avatar}`}
         authorName={`${config.author}`}
         description={
-          post.seoDescription ? `${post.seoDescription}` : `${post.summary}`
+          post.seoDescription && post.seoDescription !== post.summary
+            ? `${post.seoDescription}`
+            : `${post.summary}`
         }
       />
       <PostLayout post={post}>

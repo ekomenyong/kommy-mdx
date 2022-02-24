@@ -1,0 +1,218 @@
+---
+title: '2022 React/Next.js Developer Tech Stack and Tools'
+summary: "In 2022, I'm coding in TypeScript, building projects with React, spinning up databases with Railway, exploring Remix, and more."
+seoTitle: ''
+seoDescription: 'My preferred React tech stack and tools for 2022 adds some new tools that make developing web apps efficient and fun!'
+tags: ['Tech Stack', 'React', 'Dev Tools']
+lastmod: '02-23-2022'
+publishedAt: '02-23-2022'
+coverImage: '/images/covers/cover-react-nextjs-developer-tech-stack-tools.jpg'
+---
+
+I spent most of last year re-learning JavaScript and gaining a deeper understanding of the React ecosystem. I've been proficient using frontend tools like Next.js, CSS/SCSS, and Tailwind CSS for a couple of years but last year I learned some new skills and added some new tools.
+
+My tech stack and tooling choices reflect my love for extensibility, positive developer experience (DX), and the React ecosystem overall. Here's the tech stack and the tools I'm using and learning in 2022 to build React applications.
+
+## Warp
+
+<KommyImage
+  src="/images/content/warp-terminal-homepage.png"
+  alt="Warp Terminal Homepage Screenshot"
+  width={896}
+  height={441}
+  objectFit="cover"
+  objectPosition="top center"
+  caption="Warp is your favorite terminal's favorite terminal. 😉"
+/>
+
+Last year I switched from using [Hyper](https://hyper.is/) to [iTerm2](https://iterm2.com/) and then finally landed on Warp. [Warp](https://www.warp.dev/) is a high-performance, Rust-based terminal to make developers and teams more productive. Compared to my experience with the other two terminals, I find that Warp feels so much faster and I hear my MacBook Pro fans much less.
+
+Warp has out-of-the-box features like multi-line text editing, zsh integration, and so much more. It will be my terminal of choice moving forward and I highly recommend developers using MacOS to try it out!
+
+## React & TypeScript
+
+[React](https://reactjs.org/) is a component-based JavaScript library that has made developing websites and interfaces easy for me. I think it's a fantastic way to build web applications and the [new React documentation is in beta](https://beta.reactjs.org/). [TypeScript](https://www.typescriptlang.org/) adds additional syntax to JavaScript for type-checking. Beyond type-safety, I like using TS because I can use the same language for frontend React and backend Node.js development.
+
+If you're a React developer thinking about getting started with TypeScript, keep the [React TypeScript Cheatsheets](https://react-typescript-cheatsheet.netlify.app/) resource handy.
+
+## Next.js
+
+[Next.js](https://nextjs.org/) is a React framework for production and my preferred Static Site Generator(SSG). With Next.js, you can create fullstack applications or bring your own backend while serving a static frontend. Next.js comes with so many features out-of-the-box: hybrid SSG and SSR, incremental static regeneration, TypeScript support, file-system routing and more.
+
+I love the developer experience with Next.js because the framework is opinionated by default, but you can still customize and extend it. Though it is fully integrated with [Vercel](https://vercel.com/), you can still host a Next.js app elsewhere. If you're building for the web, I suggest checking following their tutorial to [create your first Next.js app](https://nextjs.org/learn/basics/create-nextjs-app).
+
+## Preact
+
+To increase Next.js performance in production, you can replace React with [Preact](https://preactjs.com/). [Lee Robinson](https://leerob.io/) talks about this in a video titled, [_10 Next.js Tips You Might Not Know!_](https://www.youtube.com/watch?v=R59e1Vl5lO8). For Next.js developers, it is pretty simple to implement.
+
+Once you install Preact (using yarn or npm), edit the webpack configuration in your `next.config.js` file to add the following:
+
+```js:./next.config.js showLineNumbers
+module.exports = {
+  webpack: (config, { dev, isServer }) => {
+    // Replace React with Preact only in client production build
+    if (!dev && !isServer) {
+      Object.assign(config.resolve.alias, {
+        react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',
+      });
+    }
+    return config;
+  },
+};
+```
+
+## Tailwind CSS
+
+[Tailwind CSS](https://tailwindcss.com/) is a utility-first CSS framework. Some developers see Tailwind as "yet another CMS framework" among the likes of Bootstrap or Chakra UI. As someone who learned CSS, Bootstrap 3 & 4, Bulma, [Chakra UI](https://chakra-ui.com/), and Tailwind (in that order), I disagree. While there is nothing wrong with any other CSS framework, Tailwind is not at all the same.
+
+Tailwind is a highly-customizable, fully responsive, and component-friendly CSS utility framework. For front-end developers with knowledge of CSS, the learning curve is low and adding Tailwind to your workflow can greatly speed up design time. For frontend React developers, it makes maintaining or updating component styles a breeze.
+
+```jsx:src/components/PageTitle.jsx {4-6} showLineNumbers
+  //  A Page Title component example using Tailwind CSS
+  export default function PageTitle({ children, ...props }) {
+    return (
+      <h1 className="mb-8 text-4xl text-blue-600 dark:text-white font-medium uppercase lg:text-6xl" {...props}>
+        {children}
+      </h1>
+    );
+  }
+```
+
+If you need better maintenance for styling custom React components, give Tailwind CSS a try. If you want over 500 pre-built HTML, Vue or React Components styled with Tailwind, I recommend buying a [Tailwind UI](https://tailwindui.com/) license.
+
+## GraphQL
+
+From the time I started learning about APIs, I've always been drawn to GraphQL. I love building GraphQL APIs. As a new developer building small simple applications, I may not need to worry about over- or under-fetching data (or any of the other advantages of GraphQL over REST) right now.
+
+GraphQL has made structuring and building applications easier for me to learn. Maybe I don't have enough experience with REST to say this, but in the most simple of terms, [GraphQL just makes sense](https://graphql.org/learn/). Knowing GraphQL also made learning groq a breeze when I chose Sanity.io to complement my tech stack.
+
+## Contentlayer
+
+I recently rebuilt my personal website and am now using Contentlayer to generate content from markdown and React components. The experience using Contentlayer is unmatched to any other MDX framework I've used.
+
+## Nx.dev
+
+[Nx](https://nx.dev/) is a build system with first-class monorepo support built by the peeps over at [Nrwl](https://nrwl.io/). I learned about Nx this year and have enjoyed building sample projects with it. With amazing features like editor plugins, interactive visualizations, and powerful code generation, you can easily start building projects in monorepositories. I am looking forward for their upcoming React and Tailwind CSS solution.
+
+Note: You can absolutely [setup Next.js to use Tailwind with Nx](https://blog.nrwl.io/setup-next-js-to-use-tailwind-with-nx-849b7e21d8d0), but the Nrwl team has hinted that they are working on Tailwind CSS React features.
+
+## Sanity
+
+<KommyImage
+  src="/images/content/sanity-studio-screenshot.png"
+  width={960}
+  height={540}
+  objectFit="cover"
+  objectPosition="center center"
+  alt="Sanity.io Studio CMS Screenshot"
+  caption="You get real-time collaboration and a fully customizable CMS interface with Sanity Studio."
+/>
+
+[Sanity.io](https://sanity.io) is my headless CMS of choice for React applications. Sanity.io is the ultimate content platform. Sanity.io forces you to change the way you think about structuring and delivering content. Editors will love collaborating in [Sanity Studio](https://www.sanity.io/studio), an open-source React CMS, admin backend, for your site or application.
+
+Built by developers for developers, Sanity provides great DX. Sanity Studio is built in React and TypeScript and is fully customizable. Query your database on the frontend with GraphQL or groq. With a growing source of [official and community plugins](https://www.sanity.io/exchange), Sanity makes it easy to structure and deliver your content.
+
+## Plausible
+
+<KommyImage
+  src="/images/content/plausible-privacy-focused-web-analytics-dashboard.png"
+  width={800}
+  height={678}
+  objectFit="cover"
+  objectPosition="center center"
+  alt="Plausible Analytics dashboard"
+  caption="Things we love to see: Plausible's privacy-focused web analytics 😍"
+/>
+
+I started using [Plausible Analytics](https://plausible.io/) in 2020, and have never looked back. As a digital marketer for nearly a decade, I've had to use my share of tools that are data-invasive. I love using Plausible because they are open-source, cookieless, and fully compliant with GDPR, CCPA, and PECR.
+
+Plausible Analytics is a [privacy-focused alternative to Google Analytics](https://plausible.io/privacy-focused-web-analytics). They allow you to track the usage of your website without collecting any personal data or personally identifiable information (PII), and without cookies. I can still get actionable data to improve my website _and_ respect my visitors' right to privacy.
+
+## Prisma
+
+Prisma is a Node.js and TypeScript ORM that helps developers build faster and make fewer errors. There are 6 databases supported by Prisma including PostgreSQL, MySQL, SQLite, SQL Server, MongoDB, and Cockroach DB. Prisma also offers a complete suite of products to query data ([Client](https://www.prisma.io/client)), generate database migrations ([Migrate](https://www.prisma.io/migrate)]), or explore and manipulate your data ([Studio](https://www.prisma.io/studio)).
+
+I look forward to getting familiar with [Data Platform](https://www.prisma.io/dataplatform), a new product in early access. It's a new tool to to give development teams data access superpowers and manage app data in one place.
+
+## Railway
+
+I cannot express [how much I love Railway](https://ekomenyong.com/posts/how-to-setup-free-postgresql-database-on-railway-app). Railway is an [alternative to Heroku](https://railway.app?referralCode=ekom) that allows you to deploy apps in minutes. Whether you code in JS/TS, Rust, Ruby, Python, or Golang, choose from a MySQL, PostgreSQL, MongoDB, or Redis database, and start building your app.
+
+You can check out [Railway's 1-click starters](https://railway.app/starters) to get an idea of how easy it is to get up and running with Railway. Whether you need somewhere to host a Discord bot, a [Strapi](https://strapi.io/) server, or your [MailDev](http://maildev.github.io/maildev/) server, [Railway](https://railway.app?referralCode=ekom) has you covered.
+
+## Vercel
+
+As a Next.js enthusiast, you know I could not leave [Vercel](https://vercel.com/) off of this list. Vercel is the perfect hosting toolkit for Next.js websites and over 30+ frameworks. Frontend teams can take advantage of features like fast-refresh and flexible data fetching. Backend teams will love they way they can easily collaborate with a built-in CI/CD system and deploy previews.
+
+Utilize Vercel's global edge network for better end-user performance, and let them take care of things like SSL encryption and asset compression.
+
+## New Tools to Explore in 2022
+
+The following tools are new or updated technologies or platforms that I got acquainted with in 2021 but didn't have time to build projects with. The future of web development is so bright and I'm excited to take a deep dive into the following tools this year.
+
+### PlanetScale
+
+[PlanetScale](https://planetscale.com/) is a MySQL-compatible serverless database platform built by developers for developers. It allows you to treat your databases as code, creating a better development workflow for data branching, non-blocking-schema changes, and more.
+
+It integrates nicely with tools I already love like Next.js, Prisma, and Vercel so I look forward to adding this to my workflow.
+
+### Remix
+
+<KommyImage
+  src="/images/content/remix-homepage-screenshot.png"
+  width={1436}
+  height={1002}
+  objectFit="cover"
+  objectPosition="center center"
+  alt="Homepage of Remix"
+/>
+
+When initially introduced, I thought that [Remix](https://remix.run/) was intended as an alternative to Next.js. After doing some research, I think that Remix simply gives us another option for building modern web applications. This is the only tool on my list that I have not experimented with at all yet, so I'm excited to try out the nested routes and built-in error handling features.
+
+### Keystone 6
+
+[Keystone](https://keystonejs.com/) is a CMS that I have been interested in for a long time. It is built using Next.js, TS, and Prisma and has features like a next-gen rich text editor, customizable Admin UI, GraphQL API, and more. Now that [Keystone is in General Availability](https://keystonejs.com/updates/general-availability), I look forward to building websites with Keystone 6.
+
+### Saleor
+
+<KommyImage
+  src="/images/content/saleor-react-storefront-cover.png"
+  width={1024}
+  height={585}
+  objectFit="cover"
+  objectPosition="center center"
+  alt="Cover image for Saleor's React Storefront e-commerce starter"
+  caption="Looks like a budding love affair between Saleor and Vercel."
+/>
+
+[Saleor](https://saleor.io/) is an open-source, GraphQL-first, headless e-commerce platform. The Saleor team has been working on [React Storefront](https://github.com/saleor/react-storefront), which is a template built with Next.js, TypeScript, GraphQL with Apollo Client, and Tailwind CSS.
+
+Vercel has also added Saleor as one of their options in their [Next.js Commerce Starter](https://github.com/vercel/commerce) repository.
+
+### Turborepo
+
+Vercel acquired [Turborepo](https://turborepo.org/) shortly after I had already discovered Nx. I will keep exploring Nx, but since Turborepo is now part of the Vercel family, I think it would do me good to have some monorepo development options.
+
+### NestJS Framework
+
+Last year I started learning to build backend APIs. I had always been familiar with [NestJS](https://nestjs.com/) because of how similar it sounds to Next.js. NextJS is a Node.js framework for building applications with Express or Fastify. I watched a couple YouTube videos and played around with the [NestJS CLI](https://docs.nestjs.com/cli/overview) to generate some dummy applications.
+
+Like the other tools on this list, I was able to get started just by reading through the documentation and looking at some example repositories. This year, I plan to dive deeper into designing, building, and maintaining GraphQL APIs with NestJS.
+
+### Zustand
+
+<KommyImage
+  src="/images/content/zustand-bear.jpg"
+  width={1200}
+  height={600}
+  objectFit="cover"
+  objectPosition="center center"
+  alt="Zustand bear"
+  caption="Zustand is a small, fast, 'bearbones' state-management solution."
+/>
+
+[Zustand](https://github.com/pmndrs/zustand) describes their state management tool as a "small, fast and scalable bearbones state-management solution using simplified flux principles". No, _bearbones_ is not a typo, because their mascot is a bear afterall.
+
+I've always struggled with learning Redux and I'm not exactly sure why. Hooks and Context have held me over with most of the projects I've built in the last year but I know it's only a matter of time until I need a more complex state management solution. I am excited to be excited about learning state management again.

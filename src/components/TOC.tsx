@@ -1,3 +1,4 @@
+import { Disclosure } from '@headlessui/react';
 import GithubSlugger from 'github-slugger';
 import React, {
   Dispatch,
@@ -7,6 +8,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { RiArrowDownSLine } from 'react-icons/ri';
 
 interface TOCProps {
   source: string;
@@ -66,6 +68,10 @@ const useIntersectionObserver = (
   }, [setActiveId]);
 };
 
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ');
+}
+
 const TableOfContents: FC<TOCProps> = ({ source }) => {
   const headingLines = source
     .split('\n')
@@ -88,35 +94,66 @@ const TableOfContents: FC<TOCProps> = ({ source }) => {
   useIntersectionObserver(setActiveId);
 
   return (
-    <div className="pt-8 pb-8 xl:border-b xl:border-gray-200 xl:pt-8 xl:dark:border-gray-700">
-      <h3 className="mb-4 text-base font-medium underline uppercase text-primary-600 dark:text-gray-200">
-        Table of contents
-      </h3>
-      <div className="flex flex-col items-start justify-start space-y-2">
-        {headings.map((heading, index) => {
-          return (
-            <button
-              key={index}
-              type="button"
-              className={`${
-                heading.href === activeId ? 'font-medium' : 'font-normal'
-              } ${
-                heading.level === 2 ? 'pl-2' : 'pl-6'
-              } text-sm text-gray-600 hover:underline dark:text-gray-200`}
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector(`#${heading.href}`).scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'start',
-                  inline: 'nearest',
-                });
-              }}
+    <div className="pb-5 mt-8 cursor-pointer xl:border-b xl:border-gray-200 xl:dark:border-gray-700">
+      <Disclosure
+        as="div"
+        className="flex flex-col items-start justify-center"
+        defaultOpen={true}
+      >
+        {({ open }) => (
+          <>
+            <dt>
+              <Disclosure.Button
+                as="h3"
+                className="flex flex-row items-center justify-start mb-4 text-base font-medium flex-nowrap text-primary-600"
+              >
+                <span className="uppercase hover:underline">
+                  Table of Contents
+                </span>
+                <span className="flex items-center ml-10 h-7">
+                  <RiArrowDownSLine
+                    className={classNames(
+                      open ? '-rotate-180' : 'rotate-0',
+                      'h-6 w-6 transform'
+                    )}
+                    aria-hidden="true"
+                  />
+                </span>
+              </Disclosure.Button>
+            </dt>
+            <Disclosure.Panel
+              as="dd"
+              className="flex flex-col items-start justify-start"
             >
-              {heading.text}
-            </button>
-          );
-        })}
-      </div>
+              {headings.map((heading, index) => {
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    className={`${
+                      heading.href === activeId ? 'font-medium' : 'font-normal'
+                    } ${
+                      heading.level === 2 ? 'pl-2' : 'pl-6'
+                    } text-sm text-gray-600 last:mb-4 hover:underline dark:text-gray-200`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .querySelector(`#${heading.href}`)
+                        .scrollIntoView({
+                          behavior: 'smooth',
+                          block: 'start',
+                          inline: 'nearest',
+                        });
+                    }}
+                  >
+                    {heading.text}
+                  </button>
+                );
+              })}
+            </Disclosure.Panel>
+          </>
+        )}
+      </Disclosure>
     </div>
   );
 };

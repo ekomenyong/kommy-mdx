@@ -10,7 +10,7 @@
     "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./src/scripts/generate-rss.mjs && node ./src/scripts/generate-sitemap.mjs"
   },
   "dependencies": {
-    "@headlessui/react": "^1.4.3",
+    "@headlessui/react": "^1.5.0",
     "contentlayer": "^0.1.1",
     "date-fns": "^2.28.0",
     "dayjs": "^1.10.7",

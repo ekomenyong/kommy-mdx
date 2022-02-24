@@ -14,13 +14,14 @@ import {
   Tag,
   WebWrapper,
 } from '@/components';
+import { RiArrowRightLine } from 'react-icons/ri';
 
 export default function Posts({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter((post) => {
-    const concat = post.title + post.summary + post.tags;
+    const concat = post.title + post.summary + post.tags + post.seoDescription;
     return concat.toLowerCase().includes(searchValue.toLowerCase());
   });
   return (
@@ -48,7 +49,7 @@ export default function Posts({
             type="text"
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Search all posts"
-            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md outline-primary-600 focus:border-primary-700 focus:ring-primary-600 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
+            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md outline-primary-500 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
           />
           <svg
             className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300"
@@ -74,7 +75,7 @@ export default function Posts({
 
         {filteredBlogPosts.map((post) => (
           <div
-            key={post.title}
+            key={post._id}
             className="flex flex-col pt-8 space-x-0 md:flex-row md:items-baseline md:justify-start md:space-x-4"
           >
             <p className="text-sm italic text-gray-500 basis-1/6 dark:text-gray-300">
@@ -82,26 +83,28 @@ export default function Posts({
             </p>
             <div className="max-w-3xl">
               <KommyLink href={`/posts/${post.slug}`} className="block mt-2 ">
-                <h3 className="text-2xl font-medium uppercase">{post.title}</h3>
+                <h3 className="text-3xl font-medium text-gray-900 uppercase hover:underline dark:text-white">
+                  {post.title}
+                </h3>
               </KommyLink>
-              {post.tags && (
-                <div className="pt-2">
-                  <div className="flex flex-wrap">
-                    {post.tags.map((tag: string) => (
-                      <Tag key={tag} text={tag} />
-                    ))}
-                  </div>
+
+              <div className="pt-2">
+                <div className="flex flex-wrap">
+                  {post.tags.map((tag: string) => (
+                    <Tag key={tag} text={tag} />
+                  ))}
                 </div>
-              )}
+              </div>
+
               <p className="max-w-2xl my-4 text-lg leading-normal text-gray-700 dark:text-gray-300">
                 {post.summary}
               </p>
               <KommyLink
                 href={`/posts/${post.slug}`}
-                className="text-lg font-medium uppercase"
+                className="inline-flex items-center justify-start text-base font-medium text-gray-800 uppercase hover:underline dark:text-gray-300"
                 aria-label={`Read "${post.title}"`}
               >
-                Read more &rarr;
+                Read more <RiArrowRightLine className="w-6 h-6 ml-2" />
               </KommyLink>
             </div>
           </div>
@@ -116,7 +119,16 @@ export default function Posts({
 export async function getStaticProps() {
   const posts = await allPosts
     .map((post) =>
-      pick(post, ['slug', 'title', 'summary', 'tags', 'publishedAt', 'body'])
+      pick(post, [
+        'slug',
+        'title',
+        'summary',
+        'tags',
+        'publishedAt',
+        'body',
+        'seoDescription',
+        '_id',
+      ])
     )
     .sort(
       (a, b) =>

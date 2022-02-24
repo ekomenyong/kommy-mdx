@@ -19,17 +19,16 @@ module.exports = {
         black: '#000000',
         white: '#ffffff',
         primary: {
-          25: '#fff5f6',
-          50: '#fff1f3',
-          100: '#ffe4e8',
-          200: '#fecdd6',
-          300: '#fea3b4',
-          400: '#fd6f8e',
-          500: '#f63d68',
-          600: '#e31b54',
-          700: '#c01048',
-          800: '#a11043',
-          900: '#89123e',
+          50: '#fbf5ff',
+          100: '#f6eaff',
+          200: '#e9cbff',
+          300: '#dcacff',
+          400: '#c26eff',
+          500: '#A830FF',
+          600: '#972be6',
+          700: '#7e24bf',
+          800: '#651d99',
+          900: '#52187d',
         },
         gray: {
           25: '#fcfcfd',
@@ -206,12 +205,12 @@ module.exports = {
           css: {
             color: theme('colors.gray.800'),
             a: {
-              color: theme('colors.primary.600'),
+              color: theme('colors.primary.500'),
               fontWeight: '400',
               '&:hover': {
                 color: theme('colors.primary.700'),
               },
-              code: { color: theme('colors.primary.600') },
+              code: { color: theme('colors.primary.500') },
             },
             h1: {
               fontWeight: '700',
@@ -250,7 +249,7 @@ module.exports = {
               content: 'none',
             },
             details: {
-              backgroundColor: theme('colors.white'),
+              backgroundColor: theme('colors.gray.50'),
               paddingLeft: '4px',
               paddingRight: '4px',
               paddingTop: '4px',
@@ -276,11 +275,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.200'),
             a: {
-              color: theme('colors.gray.200'),
+              color: theme('colors.primary.400'),
               '&:hover': {
                 color: theme('colors.primary.500'),
               },
-              code: { color: theme('colors.primary.600') },
+              code: { color: theme('colors.primary.500') },
             },
             h1: {
               fontWeight: '700',
