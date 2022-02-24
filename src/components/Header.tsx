@@ -34,12 +34,12 @@ export default function Header() {
             >
               About
             </KommyLink>
-            <KommyLink
+            {/* <KommyLink
               href="/projects"
               className="tracking-wide uppercase hover:underline"
             >
               Projects
-            </KommyLink>
+            </KommyLink> */}
             <KommyLink
               href="/posts"
               className="tracking-wide uppercase hover:underline"
@@ -95,12 +95,12 @@ export default function Header() {
                   >
                     About
                   </KommyLink>
-                  <KommyLink
+                  {/* <KommyLink
                     href="/projects"
                     className="tracking-wide uppercase hover:underline"
                   >
                     Projects
-                  </KommyLink>
+                  </KommyLink> */}
                   <KommyLink
                     href="/posts"
                     className="tracking-wide uppercase hover:underline"

@@ -53,7 +53,7 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
       {/* Hero */}
       <Hero />
       {/* Projects */}
-      <SectionContainer>
+      {/* <SectionContainer>
         <div className="py-20">
           <SectionHeader
             section="projects"
@@ -78,7 +78,7 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </KommyLink>
         </div>
         <hr />
-      </SectionContainer>
+      </SectionContainer> */}
       {/* Blog */}
       <SectionContainer>
         <div className="py-20">
