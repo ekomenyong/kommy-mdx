@@ -37,6 +37,8 @@ export default function Posts({
             'Read my most recent thoughts on design, development, user experience, marketing, and all things digital.',
           url: 'https://ekomenyong.com/posts',
           type: 'website',
+          locale: 'en_US',
+          site_name: 'EkomEnyong.com',
           images: [
             {
               url: 'https://ekomenyong.com/images/og-default.jpg',

@@ -52,7 +52,9 @@ export default function ProjectsPage() {
           title: 'Modern Web Design & Development Projects',
           description:
             'I design and build human-focused websites and apps using the latest web development technologies and privacy-friendly practices.',
-          url: 'https://ekomenyong.com/about',
+          locale: 'en_US',
+          site_name: 'EkomEnyong.com',
+          url: 'https://ekomenyong.com/projects',
           type: 'website',
           images: [
             {

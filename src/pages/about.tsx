@@ -40,6 +40,7 @@ const About: NextPage = () => {
           description:
             'Ekom Enyong is a digital creative based in the United States. She creates ethical, modern digital products and experiences using seo, design, and code.',
           url: 'https://ekomenyong.com/about',
+          site_name: 'EkomEnyong.com',
           type: 'website',
           images: [
             {

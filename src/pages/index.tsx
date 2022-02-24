@@ -49,12 +49,15 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
         title="Digital Creative, SEO, Design, and Development"
         titleTemplate="Ekom Enyong | %s"
         description="My name is Ekom Enyong and I create modern digital experiences for humans using seo, design, and code."
+        canonical="https://ekomenyong.com"
         openGraph={{
           title: 'Ekom Enyong | Digital Creative, SEO, Design, and Development',
           description:
             'My name is Ekom Enyong and I create modern digital experiences for humans using seo, design, and code.',
-          url: 'https://ekomenyong.com/',
+          url: 'https://ekomenyong.com',
           type: 'website',
+          locale: 'en_US',
+          site_name: 'EkomEnyong.com',
           images: [
             {
               url: 'https://ekomenyong.com/images/og-default.jpg',

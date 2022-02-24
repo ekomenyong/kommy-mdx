@@ -1,5 +1,5 @@
 import { ParsedUrlQuery } from 'querystring';
-import { NextSeo, ArticleJsonLd, DefaultSeo } from 'next-seo';
+import { NextSeo, ArticleJsonLd } from 'next-seo';
 
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allPosts, Post } from 'contentlayer/generated';
@@ -40,6 +40,8 @@ export default function SinglePost({ post }: PostProps) {
               : `${post.summary}`,
           url: `https://ekomenyong.com/posts/${post.slug}`,
           type: 'article',
+          site_name: 'EkomEnyong.com',
+          locale: 'en_US',
           article: {
             publishedTime: `${post.publishedAt}`,
             modifiedTime: `${post.lastmod}`,
