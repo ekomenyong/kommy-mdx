@@ -16,8 +16,8 @@ const posts = [
     href: '/posts/react-nextjs-developer-tech-stack-tools',
     description:
       "My 2022 design and React development tools I'm currently using. Plus, an exploration of what new tools and skills I'm exploring this year.",
-    date: 'Mar 1, 2022',
-    datetime: '2023-03-01',
+    date: 'Feb 23, 2022',
+    datetime: '2023-02-23',
     imageUrl:
       '/images/covers/cover-react-nextjs-developer-tech-stack-tools.jpg',
     readingTime: '10 min',
@@ -134,7 +134,7 @@ const About: NextPage = () => {
                       height={315}
                       objectFit="cover"
                       objectPosition="bottom center"
-                      alt=""
+                      alt={`Cover image for ${post.title}`}
                     />
                   </div>
                   <div className="flex flex-col justify-between flex-1 p-6 -mt-2 bg-white">

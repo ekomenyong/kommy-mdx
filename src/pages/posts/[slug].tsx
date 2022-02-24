@@ -28,7 +28,7 @@ export default function SinglePost({ post }: PostProps) {
             ? `${post.seoDescription}`
             : `${post.summary}`
         }
-        canonical={`https://ekomenyong.com/${post.slug}`}
+        canonical={`https://ekomenyong.com/posts/${post.slug}`}
         openGraph={{
           title:
             post.seoTitle && post.seoTitle !== post.title
@@ -38,7 +38,7 @@ export default function SinglePost({ post }: PostProps) {
             post.seoDescription && post.seoDescription !== post.summary
               ? `${post.seoDescription}`
               : `${post.summary}`,
-          url: `https://ekomenyong.com/${post.slug}`,
+          url: `https://ekomenyong.com/posts/${post.slug}`,
           type: 'article',
           article: {
             publishedTime: `${post.publishedAt}`,
@@ -47,21 +47,21 @@ export default function SinglePost({ post }: PostProps) {
           },
           images: [
             {
-              url: `https://ekomenyong.com/${post.coverImage}`,
+              url: `https://ekomenyong.com${post.coverImage}`,
               alt: `Blog post cover photo for ${post.title}`,
             },
           ],
         }}
       />
       <ArticleJsonLd
-        url={`https://ekomenyong.com/${post.slug}`}
+        url={`https://ekomenyong.com/posts/${post.slug}`}
         title={
           post.seoTitle && post.seoTitle !== post.title
             ? `${post.seoTitle}`
             : `${post.title}`
         }
         headline={`${post.title}`}
-        images={[`https://ekomenyong.com/${post.coverImage}`]}
+        images={[`https://ekomenyong.com${post.coverImage}`]}
         datePublished={`${post.publishedAt}`}
         dateModified={`${post.lastmod}`}
         publisherLogo={`${config.avatar}`}
