@@ -6,7 +6,6 @@ import {
   Contact,
   Hero,
   KommyLink,
-  ProjectCard,
   SectionContainer,
   SectionHeader,
   Tag,
