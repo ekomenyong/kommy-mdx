@@ -45,7 +45,29 @@ export default function ProjectsPage() {
     <WebWrapper>
       <NextSeo
         title="Modern Web Design & Development Projects"
+        titleTemplate="%s | Ekom Enyong"
         description="I design and build human-focused websites and apps using the latest web development technologies and privacy-friendly practices."
+        canonical="https://ekomenyong.com/projects"
+        openGraph={{
+          title: 'Modern Web Design & Development Projects',
+          description:
+            'I design and build human-focused websites and apps using the latest web development technologies and privacy-friendly practices.',
+          url: 'https://ekomenyong.com/about',
+          type: 'website',
+          images: [
+            {
+              url: 'https://ekomenyong.com/images/og-default.jpg',
+              width: 1200,
+              height: 630,
+              alt: 'Cover image for EkomEnyong.com - Digital Creative » SEO, Design, and Development',
+            },
+          ],
+        }}
+        twitter={{
+          handle: '@EkomEnyong',
+          site: '@EkomEnyong',
+          cardType: 'summary_large_image',
+        }}
       />
       <SectionContainer>
         <div className="mb-20">

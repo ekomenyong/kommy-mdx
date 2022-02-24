@@ -28,7 +28,29 @@ export default function Posts({
     <WebWrapper>
       <NextSeo
         title="Sincerely, Kommy Digital » Development Blog"
+        titleTemplate="%s | Ekom Enyong"
         description="Read my most recent thoughts on design, development, user experience, marketing, and all things digital."
+        canonical="https://ekomenyong.com/posts"
+        openGraph={{
+          title: 'Sincerely, Kommy Digital » Development Blog',
+          description:
+            'Read my most recent thoughts on design, development, user experience, marketing, and all things digital.',
+          url: 'https://ekomenyong.com/posts',
+          type: 'website',
+          images: [
+            {
+              url: 'https://ekomenyong.com/images/og-default.jpg',
+              width: 1200,
+              height: 630,
+              alt: 'Cover image for EkomEnyong.com - Digital Creative » SEO, Design, and Development',
+            },
+          ],
+        }}
+        twitter={{
+          handle: '@EkomEnyong',
+          site: '@EkomEnyong',
+          cardType: 'summary_large_image',
+        }}
       />
       <SectionContainer>
         <div className="pt-20 pb-12">

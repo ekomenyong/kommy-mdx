@@ -13,14 +13,6 @@ export default {
     description:
       "My name is Ekom Enyong and I'm an SEO Manager and self-taught Next.js developer.",
     type: 'website',
-    images: [
-      {
-        url: 'https://ekomenyong.com/images/og-default.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Cover image for EkomEnyong.com - Digital Creative » SEO, Design, and Development',
-      },
-    ],
   },
   twitter: {
     handle: '@EkomEnyong',

@@ -13,9 +13,9 @@ export default function Header() {
             <KommyLink href="#">
               <span className="sr-only">Ekom Enyong</span>
               <KommyLink href="/">
-                <h2 className="text-2xl font-bold uppercase jelly">
+                <span className="text-2xl font-bold uppercase jelly">
                   ekom<span className="italic font-normal">enyong</span>
-                </h2>
+                </span>
               </KommyLink>
             </KommyLink>
           </div>

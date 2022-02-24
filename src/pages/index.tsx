@@ -48,6 +48,27 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <NextSeo
         title="Digital Creative, SEO, Design, and Development"
         titleTemplate="Ekom Enyong | %s"
+        description="My name is Ekom Enyong and I create modern digital experiences for humans using seo, design, and code."
+        openGraph={{
+          title: 'Ekom Enyong | Digital Creative, SEO, Design, and Development',
+          description:
+            'My name is Ekom Enyong and I create modern digital experiences for humans using seo, design, and code.',
+          url: 'https://ekomenyong.com/',
+          type: 'website',
+          images: [
+            {
+              url: 'https://ekomenyong.com/images/og-default.jpg',
+              width: 1200,
+              height: 630,
+              alt: 'Cover image for EkomEnyong.com - Digital Creative » SEO, Design, and Development',
+            },
+          ],
+        }}
+        twitter={{
+          handle: '@EkomEnyong',
+          site: '@EkomEnyong',
+          cardType: 'summary_large_image',
+        }}
       />
       {/* Hero */}
       <Hero />

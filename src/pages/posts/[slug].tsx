@@ -1,5 +1,5 @@
 import { ParsedUrlQuery } from 'querystring';
-import { NextSeo, ArticleJsonLd } from 'next-seo';
+import { NextSeo, ArticleJsonLd, DefaultSeo } from 'next-seo';
 
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allPosts, Post } from 'contentlayer/generated';
@@ -49,8 +49,15 @@ export default function SinglePost({ post }: PostProps) {
             {
               url: `https://ekomenyong.com${post.coverImage}`,
               alt: `Blog post cover photo for ${post.title}`,
+              width: 1200,
+              height: 600,
             },
           ],
+        }}
+        twitter={{
+          handle: '@EkomEnyong',
+          site: '@EkomEnyong',
+          cardType: 'summary_large_image',
         }}
       />
       <ArticleJsonLd

@@ -32,7 +32,29 @@ const About: NextPage = () => {
     <WebWrapper>
       <NextSeo
         title="About Ekom Enyong » Digital Creative & Next.js Developer"
+        titleTemplate="%s | Ekom Enyong"
         description="Ekom Enyong is a digital creative based in the United States. She creates ethical, modern digital products and experiences using seo, design, and code."
+        canonical="https://ekomenyong.com/about"
+        openGraph={{
+          title: 'About Ekom Enyong » Digital Creative & Next.js Developer',
+          description:
+            'Ekom Enyong is a digital creative based in the United States. She creates ethical, modern digital products and experiences using seo, design, and code.',
+          url: 'https://ekomenyong.com/about',
+          type: 'website',
+          images: [
+            {
+              url: 'https://ekomenyong.com/images/og-default.jpg',
+              width: 1200,
+              height: 630,
+              alt: 'Cover image for EkomEnyong.com - Digital Creative » SEO, Design, and Development',
+            },
+          ],
+        }}
+        twitter={{
+          handle: '@EkomEnyong',
+          site: '@EkomEnyong',
+          cardType: 'summary_large_image',
+        }}
       />
       {/* Hero */}
       <SectionContainer>
