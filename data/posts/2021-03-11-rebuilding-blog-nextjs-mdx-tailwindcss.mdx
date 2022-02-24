@@ -13,7 +13,7 @@ coverImage: '/images/covers/cover-rebuilding-blog-nextjs-mdx-tailwindcss.jpg'
 
 After initially building my blog with Next.js and [Sanity.io](http://sanity.io), my website was in desperate need of a refresh. And while I absolutely love Sanity, their headless CMS is a tad too robust for my simple blog site needs.
 
-Since the last time I built my website, Next.js has implemented features I wasn’t using. I have also have come a _long_ way in my self-taught developer journey. I've discovered new tools and techniques that I've been itching to try and I wanted to reflect that in my stack for this rebuild.
+Since the last time I built my website, Next.js has implemented features I wasn't using. I have also have come a _long_ way in my self-taught developer journey. I've discovered new tools and techniques that I've been itching to try and I wanted to reflect that in my stack for this rebuild.
 
 Now that I have an MVP for my website, I'll be writing content on a regular cadence and adding more features/refactoring along the way. [View the code on Github](https://github.com/ekomenyong/ekomenyong.com) if you're interested.
 
@@ -32,7 +32,7 @@ For his personal site and [Next.js Tailwind Starter Blog template](https://githu
 
 ### Next.js – The React Production Framework
 
-Since discovering Next.js about a year ago, none of JavaScript's other "shiny new toys" have caught my eye. Coming from a history of developing custom WordPress themes and spinning up local servers or figuring out compiling and bundling, the developer experience of Next.js is so wonderful – even as a beginner to React.
+Since discovering Next.js about a year ago, none of JavaScript's other "shiny new toys" have caught my eye. Coming from a history of developing custom WordPress themes and spinning up local servers or figuring out compiling and bundling, the developer experience of Next.js is so wonderful &mdash; even as a beginner to React.
 
 For React developers that have not tried it out, I highly recommend you take a look at the [Next.js documentation](https://nextjs.org/docs) and [repository of Next.js application examples](https://github.com/vercel/next.js/tree/canary/examples). When you get some time, try out your own project.
 
@@ -46,7 +46,7 @@ I also love their Dark mode feature which allowed me to create 2 distinct experi
 
 ### Markdown with React Components (MDX)
 
-Developers tend to love markdown because it’s easier to type and format text that will eventually be rendered back to a language browsers can understand. The basic use of markdown is to type less.
+Developers tend to love markdown because it's easier to type and format text that will eventually be rendered back to a language browsers can understand. The basic use of markdown is to type less.
 
 [MDX](https://mdxjs.com/) is a wonderful tool to allow you to include JSX into files. For developers that may not need or want the features of an entire CMS, this means they can still include their custom components when they want to.
 
@@ -56,7 +56,7 @@ I had already been familiar with using markdown in the past for note taking purp
 
 Using [Prism](https://prismjs.com/) for syntax highlighting, I can blog about my development journey and render code snippets on my posts using markdown. Below is an example of of a code block.
 
-```js:src/components/BlogTitle.js {1} showLineNumbers
+```js:src/components/BlogTitle.js showLineNumbers
     export default function BlogTitle({ children }) {
       return <h1 className="text-3xl md:text-5xl font-bold mb-4">{children}</h1>;
     }
@@ -87,7 +87,7 @@ Coming from using other hosting platforms, Vercel provides a simple-to-navigate 
 
 Vercel also offers [Vercel Analytics](https://vercel.com/analytics) to provide you with a Real Experience score from your user visits. You can gather data and insights from the experience your visitors have on the actual devices they use.
 
-Using Vercel, I host my website for absolutely free. Okay, okay, that's not _exactly_ true – it does cost my time of creating the site. <Emoji emoji="😜" label="Stuck out toungue wininking face" />
+Using Vercel, I host my website for absolutely free. Okay, okay, that's not _exactly_ true &mdash; it does cost my time of creating the site. <Emoji emoji="😜" label="Stuck out tongue winking face" />
 
 ## What's Next? (pun intended)
 

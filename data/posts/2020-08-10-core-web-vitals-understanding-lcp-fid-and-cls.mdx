@@ -80,14 +80,14 @@ Be aware that the extensions you use on your browser can affect your scores, so 
 Use the [Web Vitals browser extension](https://chrome.google.com/webstore/detail/web-vitals/ahfhijdlegdabablpippeagghigmibma) on Chrome (or Brave) to be able to provide you with instant metrics of a web page.
 I've been using it in Brave to measure performance on [my Next.js website](/posts/rebuilding-blog-nextjs-mdx-tailwindcss) and it works on any other Chromium-based browser.
 
-<Image
+<KommyImage
   alt="Screenshot of core web vitals metric browser extension"
   src="/images/content/web-vitals-ekomenyong.com-screenshot.png"
   width={900}
   height={418}
+  caption="Web vitals browser extension"
   priority
 />
-<p className=" center text-sm italic">Web vitals browser extension</p>
 
 ### Google Search Console
 
@@ -102,7 +102,7 @@ If your client is working on a [Next.js application](https://nextjs.org/) runnin
 You can create a custom App component and define a reportWebVitals function. You track more than just Web Vitals.
 Check out their docs on [how to measure performance in Next.js](https://nextjs.org/docs/advanced-features/measuring-performance) for more information.
 
-```js:pages/_app.js {2} showLineNumbers
+```js:pages/_app.js showLineNumbers
   export function reportWebVitals(metric) {
     console.log(metric);
   }

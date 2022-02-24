@@ -67,7 +67,7 @@ export default function Posts({
             things digital.
           </p>
         </div>
-        <div className="relative w-2/3 mb-4 ">
+        <div className="relative w-full mb-4 lg:w-2/3 ">
           <input
             aria-label="Search all posts"
             type="text"

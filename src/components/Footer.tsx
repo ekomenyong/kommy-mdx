@@ -55,7 +55,7 @@ export default function Footer() {
             <KommyLink
               key={item.name}
               href={item.href}
-              className="text-gray-700 jelly hover:text-primary-500 dark:text-white dark:hover:text-primary-300"
+              className="text-gray-800 jelly hover:text-primary-500 dark:text-white dark:hover:text-primary-300"
             >
               <span className="sr-only">{item.name}</span>
               <item.icon className="w-6 h-6" aria-hidden="true" />
@@ -64,7 +64,7 @@ export default function Footer() {
           <ThemeToggle />
         </div>
         <div className="mt-8 md:order-1 md:mt-0">
-          <p className="text-base text-center text-gray-700 dark:text-white">
+          <p className="text-base text-center text-gray-800 dark:text-white">
             &copy; 2022{' '}
             <KommyLink
               href="/"

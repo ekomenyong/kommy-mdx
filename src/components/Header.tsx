@@ -10,17 +10,13 @@ export default function Header() {
       <header className="px-4 mx-auto max-w-7xl sm:px-6">
         <div className="flex items-center justify-between py-6 border-b border-gray-00 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <KommyLink href="#">
-              <span className="sr-only">Ekom Enyong</span>
-              <KommyLink href="/">
-                <span className="text-2xl font-bold uppercase jelly">
-                  ekom<span className="italic font-normal">enyong</span>
-                </span>
-              </KommyLink>
+            <span className="sr-only">Ekom Enyong</span>
+            <KommyLink href="/" className="text-2xl font-bold uppercase jelly">
+              ekom<span className="italic font-normal">enyong</span>
             </KommyLink>
           </div>
           <div className="-my-2 -mr-2 md:hidden">
-            <Popover.Button className="inline-flex items-center justify-center p-2 rounded bg-gray-50 hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-700 dark:bg-gray-900">
+            <Popover.Button className="inline-flex items-center justify-center p-2 bg-white rounded hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-700 dark:bg-gray-900">
               <span className="sr-only">Open menu</span>
               <RiMenuLine className="w-6 h-6" aria-hidden="true" />
             </Popover.Button>
@@ -47,7 +43,7 @@ export default function Header() {
               Posts
             </KommyLink>
             <KommyLink
-              href="#"
+              href="mailto:hello@ekomenyong.com"
               className="flex items-center justify-center px-4 py-1 text-base font-medium tracking-wider text-white uppercase border border-transparent rounded shadow-sm bg-primary-600 hover:underline dark:border-primary-600 dark:hover:bg-transparent"
             >
               Contact
@@ -75,13 +71,13 @@ export default function Header() {
               <div className="flex items-center justify-between">
                 <div>
                   <KommyLink href="/">
-                    <h2 className="text-xl font-bold jelly">
+                    <h2 className="text-xl font-bold uppercase jelly">
                       ekom<span className="italic font-normal">enyong</span>
                     </h2>
                   </KommyLink>
                 </div>
                 <div className="-mr-2">
-                  <Popover.Button className="inline-flex items-center justify-center p-2 rounded bg-gray-50 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 dark:bg-gray-800 ">
+                  <Popover.Button className="inline-flex items-center justify-center p-2 bg-white rounded hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 dark:bg-gray-900 ">
                     <span className="sr-only">Close menu</span>
                     <RiCloseLine className="w-6 h-6" aria-hidden="true" />
                   </Popover.Button>

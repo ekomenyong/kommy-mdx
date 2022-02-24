@@ -1,26 +1,30 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
 
 const ThemeToggle = () => {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), [])
+  useEffect(() => setMounted(true), []);
 
   return (
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      className="jelly ml-1 mr-1 h-8 w-8 rounded p-1 sm:ml-4"
-      onClick={() => setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')}
+      className="w-8 h-8 p-1 ml-1 mr-1 rounded jelly sm:ml-4"
+      onClick={() =>
+        setTheme(
+          theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark'
+        )
+      }
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        className="text-gray-900 dark:text-gray-100"
+        className="text-gray-800 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-300"
       >
         {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
           <path
@@ -33,7 +37,7 @@ const ThemeToggle = () => {
         )}
       </svg>
     </button>
-  )
-}
+  );
+};
 
-export default ThemeToggle
+export default ThemeToggle;
