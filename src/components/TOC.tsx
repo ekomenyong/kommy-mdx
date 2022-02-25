@@ -134,7 +134,7 @@ const TableOfContents: FC<TOCProps> = ({ source }) => {
                       heading.href === activeId ? 'font-medium' : 'font-normal'
                     } ${
                       heading.level === 2 ? 'pl-2' : 'pl-6'
-                    } text-sm text-gray-600 last:mb-4 hover:underline dark:text-gray-200`}
+                    } text-base text-gray-600 last:mb-4 hover:underline dark:text-gray-200`}
                     onClick={(e) => {
                       e.preventDefault();
                       document

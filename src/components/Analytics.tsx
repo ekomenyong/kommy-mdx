@@ -6,7 +6,7 @@ const PlausibleScript = () => {
       strategy="lazyOnload"
       defer
       data-domain={`${config.plausibleDataDomain}`}
-      src="/js/script.js"
+      src="https://plausible.io/js/plausible.js"
     />
   );
 };

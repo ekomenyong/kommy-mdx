@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="flex flex-col items-center pt-10 pb-20 md:pt-32 lg:items-start">
         <div className="flex flex-col items-center justify-center mb-20 space-y-8 lg:mb-0 lg:flex-row lg:items-start lg:justify-between lg:space-y-0">
           <div className="max-w-sm md:max-w-2xl lg:max-w-3xl lg:basis-2/3">
-            <h1 className="mb-4 text-4xl font-medium uppercase md:text-5xl lg:text-6xl">
+            <h1 className="mb-4 text-5xl font-medium uppercase lg:text-6xl">
               <span className="font-bold">
                 Ekom<span className="italic font-normal"> Enyong</span>
               </span>{' '}
@@ -29,7 +29,8 @@ export default function Hero() {
               alt="Headshot of Ekom Enyong"
               objectFit="cover"
               objectPosition="center center"
-              className="rounded-full animate-spin-slow"
+              className="rounded-full"
+              priority
             />
           </div>
         </div>

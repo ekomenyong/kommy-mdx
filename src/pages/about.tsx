@@ -73,7 +73,7 @@ const About: NextPage = () => {
       </SectionContainer>
       {/* About */}
       <SectionContainer>
-        <div className="flex flex-col mb-12 lg:mb-20 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex flex-col items-center justify-start mb-12 lg:mb-20 lg:flex-row lg:items-start lg:justify-between">
           <div className="mb-8 md:mb-0">
             <Image
               src="/images/ekom-enyong-headshot.jpeg"
@@ -83,6 +83,7 @@ const About: NextPage = () => {
               objectFit="cover"
               objectPosition="center center"
               className="rounded-full"
+              priority
             />
           </div>
           <div className="max-w-2xl space-y-4 text-xl">
@@ -132,7 +133,7 @@ const About: NextPage = () => {
                 <li>React/Next.js</li>
                 <li>TypeScript</li>
                 <li>Tailwind CSS</li>
-                <li>MDX (markdown) with ContentLayer</li>
+                <li>MDX (markdown) with Contentlayer</li>
                 <li>Sanity.io &mdash; Structured Content Platform</li>
                 <li>Plausible &mdash; Privacy friendly analytics</li>
               </div>
