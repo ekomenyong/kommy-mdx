@@ -1,171 +1,107 @@
-import type { InferGetStaticPropsType } from 'next';
 import dayjs from 'dayjs';
-import { NextSeo } from 'next-seo';
-
 import {
-  Contact,
-  Hero,
+  AboutSection,
+  ContactSection,
+  Container,
+  HeroSection,
   KommyLink,
-  SectionContainer,
-  SectionHeader,
-  Tag,
   WebWrapper,
 } from '@/components';
+
 import { allPosts } from 'contentlayer/generated';
-import { pick } from '@/utils/contentlayer';
-import { RiArrowRightLine } from 'react-icons/ri';
+import { pick } from 'contentlayer/client';
+import { InferGetStaticPropsType } from 'next';
+import { NextSeo } from 'next-seo';
+import { config } from '@/config';
 
-// const projects = [
-//   {
-//     title: 'Hyper Ethos',
-//     description:
-//       'Web design and development for an independent creative collective',
-//     imageUrl: '/images/event.jpg',
-//     slug: '#',
-//   },
-//   {
-//     title: 'Hyper Ethos',
-//     description:
-//       'Web design and development for an independent creative collective',
-//     imageUrl: '/images/event.jpg',
-//     slug: '#',
-//   },
-//   {
-//     title: 'Hyper Ethos',
-//     description:
-//       'Web design and development for an independent creative collective',
-//     imageUrl: '/images/event.jpg',
-//     slug: '#',
-//   },
-// ];
-
-// const MAX_PROJECT_DISPLAY = 3;
-const MAX_DISPLAY = 5;
+const MAX_DISPLAY = 3;
 
 const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <WebWrapper>
+    <WebWrapper color="bg-pink-100">
       <NextSeo
-        title="Digital Creative, SEO, Design, and Development"
-        titleTemplate="Ekom Enyong | %s"
-        description="My name is Ekom Enyong and I create modern digital experiences for humans using seo, design, and code."
-        canonical="https://ekomenyong.com"
+        title={config.seo.title}
+        description={config.seo.description}
+        canonical={config.seo.canonical}
         openGraph={{
-          title: 'Ekom Enyong | Digital Creative, SEO, Design, and Development',
-          description:
-            'My name is Ekom Enyong and I create modern digital experiences for humans using seo, design, and code.',
-          url: 'https://ekomenyong.com',
-          type: 'website',
-          locale: 'en_US',
-          site_name: 'EkomEnyong.com',
+          url: config.seo.openGraph.url,
+          title: config.seo.openGraph.title,
+          description: config.seo.openGraph.description,
+          type: config.seo.openGraph.type,
+          site_name: config.site.sitename,
           images: [
             {
-              url: 'https://ekomenyong.com/images/og-default.jpg',
+              url: config.seo.image,
               width: 1200,
               height: 630,
-              alt: 'Cover image for EkomEnyong.com - Digital Creative » SEO, Design, and Development',
+              alt: `Cover image for ${config.site.sitename}`,
             },
           ],
         }}
         twitter={{
-          handle: '@EkomEnyong',
-          site: '@EkomEnyong',
-          cardType: 'summary_large_image',
+          handle: config.seo.twitter.handle,
+          site: config.seo.twitter.site,
+          cardType: config.seo.twitter.cardType,
         }}
       />
-      {/* Hero */}
-      <Hero />
-      {/* Projects */}
-      {/* <SectionContainer>
-        <div className="py-20">
-          <SectionHeader
-            section="projects"
-            title="Ethical digital experiences focused on your end-users"
-          />
-          <div className="grid items-center justify-center grid-flow-row grid-cols-1 mb-20 auto-rows-fr gap-x-6 gap-y-16 lg:grid-cols-3">
-            {projects.slice(0, MAX_PROJECT_DISPLAY).map((p) => (
-              <ProjectCard
-                key={p.title}
-                title={p.title}
-                description={p.description}
-                imageUrl={p.imageUrl}
-                slug={p.slug}
-              />
-            ))}
-          </div>
-          <KommyLink
-            href="/projects"
-            className="inline-flex items-center justify-center px-4 py-1 mt-8 text-lg font-medium tracking-wider text-white uppercase bg-gray-900 border border-transparent rounded shadow-sm bg-accent whitespace-nowrap hover:underline dark:border-white dark:hover:bg-transparent"
-          >
-            View all projects <RiArrowRightLine className="w-6 h-6 ml-4" />
-          </KommyLink>
-        </div>
-        <hr />
-      </SectionContainer> */}
-      {/* Blog */}
-      <SectionContainer>
-        <div className="py-20">
-          <SectionHeader
-            section="blog"
-            title="Sincerely, Kommy Digital: The Blog"
-          />
-          <p className="max-w-2xl mb-4 text-xl text-gray-700 dark:text-gray-300">
-            Read my most recent thoughts on the latest trends in design,
-            development, user experience, marketing, and all things digital.
-          </p>
-          <hr />
-          <div className="grid grid-cols-1 gap-16 mb-8 divide-y gap-y-12">
-            {posts.slice(0, MAX_DISPLAY).map((post) => (
-              <div
-                key={post._id}
-                className="flex flex-col pt-8 space-x-0 md:flex-row md:items-baseline md:justify-start md:space-x-4"
-              >
-                <p className="text-sm italic text-gray-500 basis-1/6 dark:text-gray-300">
-                  <span>{dayjs(post.publishedAt).format('MMMM DD, YYYY')}</span>
-                </p>
-                <div className="max-w-3xl">
-                  <KommyLink
-                    href={`/posts/${post.slug}`}
-                    className="block mt-2 "
-                  >
-                    <h3 className="text-3xl font-medium text-gray-900 uppercase hover:underline dark:text-white">
-                      {post.title}
-                    </h3>
-                  </KommyLink>
+      <Container>
+        <HeroSection />
+        <AboutSection />
+        <Container>
+          <div className="py-16">
+            <div className="flex flex-col items-start justify-start lg:flex-row">
+              <span className="max-w-sm pt-0 pb-4 mr-0 text-xl font-medium uppercase lg:pb-0 lg:pt-4 lg:mr-40 lg:w-28">
+                insights
+              </span>
+              <div className="flex flex-col items-start">
+                <h1 className="max-w-sm mb-8 text-5xl font-medium uppercase lg:max-w-3xl lg:text-9xl">
+                  latest thoughts
+                </h1>
 
-                  <div className="pt-2">
-                    <div className="flex flex-wrap">
-                      {post.tags.map((tag: string) => (
-                        <Tag key={tag} text={tag} />
-                      ))}
+                <div className="max-w-3xl divide-y">
+                  {posts.slice(0, MAX_DISPLAY).map((post, index) => (
+                    <div key={index} className="py-4">
+                      <p className="text-base text-gray-600">
+                        <time
+                          dateTime={
+                            post.last_modified &&
+                            post.last_modified !== post.publish_date
+                              ? post.last_modified
+                              : post.publish_date
+                          }
+                        >
+                          {dayjs(
+                            post.last_modified &&
+                              post.last_modified !== post.publish_date
+                              ? post.last_modified
+                              : post.publish_date
+                          ).format('MMMM DD, YYYY')}
+                        </time>
+                      </p>
+                      <KommyLink href={`/posts/${post.slug}`} className="mt-2">
+                        <h3 className="inline text-2xl font-medium uppercase animated-underline">
+                          {post.title}
+                        </h3>
+                      </KommyLink>
+                      <p className="mt-3 text-xl text-gray-600">{post.summary}</p>
+                      <div className="mt-3"></div>
                     </div>
-                  </div>
-
-                  <p className="max-w-2xl my-4 text-lg leading-normal text-gray-700 dark:text-gray-300">
-                    {post.summary}
-                  </p>
+                  ))}
+                </div>
+                <div className="pt-8">
                   <KommyLink
-                    href={`/posts/${post.slug}`}
-                    className="inline-flex items-center justify-start text-base font-medium text-gray-800 uppercase hover:underline dark:text-gray-300"
-                    aria-label={`Read "${post.title}"`}
+                    href="/posts"
+                    className="text-xl font-medium uppercase lg:text-2xl animated-underline"
                   >
-                    Read more <RiArrowRightLine className="w-6 h-6 ml-2" />
+                    Read more posts <span className="pl-8">&rarr;</span>
                   </KommyLink>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
-          <KommyLink
-            href="/posts"
-            className="inline-flex items-center justify-center px-4 py-1 mt-8 text-lg font-medium tracking-wider text-white uppercase bg-gray-900 border border-transparent rounded shadow-sm bg-accent whitespace-nowrap hover:underline dark:border-white dark:hover:bg-transparent"
-          >
-            View All Posts <RiArrowRightLine className="w-6 h-6 ml-4" />
-          </KommyLink>
-        </div>
-        <hr />
-      </SectionContainer>
-      {/* Contact */}
-      <Contact />
+        </Container>
+        <ContactSection />
+      </Container>
     </WebWrapper>
   );
 };
@@ -175,11 +111,21 @@ export default Home;
 export function getStaticProps() {
   const posts = allPosts
     .map((post) =>
-      pick(post, ['slug', 'title', 'summary', 'tags', 'publishedAt', '_id'])
+      pick(post, [
+        '_id',
+        'slug',
+        'title',
+        'summary',
+        'publish_date',
+        'last_modified',
+        'draft',
+      ])
     )
+    .filter((post) => post.draft === false)
     .sort(
-      (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+      (a, b) => Number(new Date(b.last_modified)) - Number(new Date(a.last_modified))
     );
-  return { props: { posts } };
+  return {
+    props: { posts },
+  };
 }

@@ -5,9 +5,13 @@
  * https://github.com/PrismJS/prism-themes
  */
 
+pre {
+  overflow-x: auto;
+}
+
 /* Code title styles */
 .rehype-code-title {
-  @apply rounded-t border border-gray-200 bg-gray-100 py-3 pb-2 pl-6 font-mono text-sm italic text-gray-800;
+  @apply rounded-t border border-gray-200 bg-gray-100 py-3 pb-2 pl-6 font-mono font-medium text-sm italic text-gray-700;
 }
 
 .rehype-code-title + div > pre {
@@ -20,7 +24,7 @@
 }
 
 .code-line {
-  @apply -mx-4 block border-l-4 border-opacity-0 pl-4 pr-4;
+  @apply -mx-4 block border-l-4 border-transparent border-opacity-0 pl-4 pr-4;
 }
 
 .code-line.inserted {
@@ -32,7 +36,7 @@
 }
 
 .highlight-line {
-  @apply -mx-4 border-l-4 border-rose-600 bg-gray-700 bg-opacity-50;
+  @apply -mx-4 border-l-4 border-primary-500 bg-gray-700 bg-opacity-50;
 }
 
 .line-number::before {

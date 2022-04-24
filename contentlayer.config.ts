@@ -1,16 +1,12 @@
-import {
-  ComputedFields,
-  defineDocumentType,
-  makeSource,
-} from 'contentlayer/source-files';
-
+import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
+
 import remarkGfm from 'remark-gfm';
 import remarkFootnotes from 'remark-footnotes';
-import rehypeSlug from 'rehype-slug';
-import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypePrism from 'rehype-prism-plus';
+import rehypeCodeTitles from 'rehype-code-titles';
+import rehypePrismPlus from 'rehype-prism-plus';
+import rehypeSlug from 'rehype-slug';
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -22,25 +18,31 @@ const computedFields: ComputedFields = {
     type: 'string',
     resolve: (doc) =>
       doc._raw.sourceFileName
+        // Replace YYYY-MM-DD dates on slug
         .replace(/(\d{4})-(\d{2})-(\d{2})-/g, '')
-        .replace(/\.mdx$/, '')
-        .replace(/\.md$/, ''),
+        .replace(/\.(mdx|md)|(\/index\.(mdx|md))/, ''),
   },
 };
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: 'posts/**/*.mdx',
+  filePathPattern: 'posts/**/*.{mdx,md}',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
-    seoTitle: { type: 'string', required: false },
-    seoDescription: { type: 'string', required: false },
     summary: { type: 'string', required: true },
-    lastmod: { type: 'date', required: true },
-    publishedAt: { type: 'date', required: true },
-    coverImage: { type: 'string', required: true },
-    tags: { type: 'list', of: { type: 'string' }, required: true },
+    draft: { type: 'boolean', required: false },
+    last_modified: { type: 'date', required: false },
+    publish_date: { type: 'date', required: true },
+    cover_image: { type: 'string', required: true },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+      default: [],
+      required: false,
+    },
+    seo_title: { type: 'string', required: false },
+    seo_description: { type: 'string', required: false },
   },
   computedFields,
 }));
@@ -49,17 +51,12 @@ const contentLayerConfig = makeSource({
   contentDirPath: 'data',
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [remarkGfm, remarkFootnotes],
+    remarkPlugins: [remarkGfm, [remarkFootnotes, { inline: true }]],
     rehypePlugins: [
       rehypeSlug,
+      rehypeAutolinkHeadings,
       rehypeCodeTitles,
-      rehypePrism,
-      [
-        rehypeAutolinkHeadings,
-        {
-          properties: { className: ['anchor'] },
-        },
-      ],
+      [rehypePrismPlus, { ignoreMissing: true }],
     ],
   },
 });

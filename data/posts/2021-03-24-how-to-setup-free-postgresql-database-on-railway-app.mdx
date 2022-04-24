@@ -1,12 +1,11 @@
 ---
 title: 'How to Setup a Free PostgreSQL Database on Railway'
-seoTitle: ''
-seoDescription: 'I recently discovered Railway, an app infrastructure platform. Setup a free PostgreSQL database to use in your next project.'
 summary: 'I recently discovered Railway, an app infrastructure platform. Setup a free PostgreSQL database to use in your next project.'
+publish_date: '03-24-2021'
+last_modified: '03-24-2021'
+cover_image: '/images/covers/cover-how-to-setup-free-postgresql-database-on-railway-app.jpg'
 tags: ['next.js', 'railyway', 'PostgreSQL', 'heroku']
-lastmod: '03-24-2021'
-publishedAt: '03-24-2021'
-coverImage: '/images/covers/cover-how-to-setup-free-postgresql-database-on-railway-app.jpg'
+draft: false
 ---
 
 [Railway](https://railway.app/) offers a free plan for hosting databases including PostgreSQL, MongoDB, and Redis. When you need to get started quickly with a hosted database for a new project or prototype, Railway is extremely valuable.
@@ -48,12 +47,12 @@ Here's how to setup a free PostgreSQL database using Railway.
 ### 1. Sign up for a Railway account
 
 <KommyImage
-  alt="The homepage for Railway"
-  src="/images/content/railway-homepage-screenshot.jpg"
-  width={1200}
-  height={528}
-  caption="The homepage for Railway."
-  priority
+	alt="The homepage for Railway"
+	src="/images/content/railway-homepage-screenshot.jpg"
+	width={1200}
+	height={528}
+	caption="The homepage for Railway."
+	priority
 />
 
 Direct your browser to [https://railway.app](https://railway.app/) and click **Login** or **Get Started** to create an account or sign back into your dashboard.
@@ -69,12 +68,12 @@ When you follow the link from your email or log in, you will presented with an e
 Click on **Create First Project** to add a new project to your dashboard. Your screen should look a little something like this:
 
 <KommyImage
-  alt="Screenshot of new Railway project options"
-  src="/images/content/new-railway-project-screenshot.jpg"
-  width={1200}
-  height={730}
-  caption="Options for starting a new project on Railway."
-  priority
+	alt="Screenshot of new Railway project options"
+	src="/images/content/new-railway-project-screenshot.jpg"
+	width={1200}
+	height={730}
+	caption="Options for starting a new project on Railway."
+	priority
 />
 
 Click on **Provision PostgreSQL**. Railway will begin spinning up your database. Once you're done, you will be ready to view credentials and connect your frontend to your database.
@@ -84,12 +83,12 @@ Click on **Provision PostgreSQL**. Railway will begin spinning up your database.
 Once your project is set up, your screen will show your project dashboard. If you only need the database URL to connect to your PostgreSQL client, you can click on **PostgresSQL** in the sidebar navigation and then click the **Connect** tab as shown in the screenshot below.
 
 <KommyImage
-  alt="View PostgreSQL database credentials in your dashboard"
-  src="/images/content/railway-db-credentials.jpg"
-  width={1200}
-  height={665}
-  caption="Easily copy the database URL from your project dashboard."
-  priority
+	alt="View PostgreSQL database credentials in your dashboard"
+	src="/images/content/railway-db-credentials.jpg"
+	width={1200}
+	height={665}
+	caption="Easily copy the database URL from your project dashboard."
+	priority
 />
 
 You can view full database credentials by navigating to the **Variables** section of your Project Dashboard and click on **PostgreSQL**. This will open an accordion showing all of your database credentials.
@@ -97,12 +96,12 @@ You can view full database credentials by navigating to the **Variables** sectio
 You can then reveal or copy your credentials by environment, and create your own custom variables as needed.
 
 <KommyImage
-  alt="View full database credentials with Railway"
-  src="/images/content/full-database-credentials-from-railway.jpg"
-  width={1200}
-  height={593}
-  caption="View your full PostgreSQL database credentials."
-  priority
+	alt="View full database credentials with Railway"
+	src="/images/content/full-database-credentials-from-railway.jpg"
+	width={1200}
+	height={593}
+	caption="View your full PostgreSQL database credentials."
+	priority
 />
 
 Visit the **Settings** section (located on the sidebar navigation) to get and manage other details about your Railway project including a Project ID, environments, API tokens, and integrations.
@@ -110,10 +109,9 @@ Visit the **Settings** section (located on the sidebar navigation) to get and ma
 ## Trying Railway for your next project
 
 <p>
-  With Railway's Free Plan, you can have up to 3 projects, with limits of 2
-  plugins and environments per project. You can learn more about [Railway's
-  other pricing plans and features](https://railway.app/pricing) on their
-  website.
+	With Railway's Free Plan, you can have up to 3 projects, with limits of 2 plugins and environments
+	per project. You can learn more about [Railway's other pricing plans and
+	features](https://railway.app/pricing) on their website.
 </p>
 
 ### Integrating Railway with Next.js applications

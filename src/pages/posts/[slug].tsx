@@ -1,55 +1,53 @@
-import { ParsedUrlQuery } from 'querystring';
-import { NextSeo, ArticleJsonLd } from 'next-seo';
-
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import { allPosts, Post } from 'contentlayer/generated';
-import components from '../../components/MDXComponents';
+import { allPosts, type Post } from 'contentlayer/generated';
+import { ParsedUrlQuery } from 'querystring';
 
-import PostLayout from '@/layouts/singlePost';
 import { WebWrapper } from '@/components';
-import config from '@/config/site';
+import components from 'src/components/MDXComponents';
+import PostLayout from '@/layouts/PostLayout';
+import { ArticleJsonLd, NextSeo } from 'next-seo';
+import { config } from '@/config';
 
-type PostProps = {
+type SinglePostProps = {
   post: Post;
 };
-export default function SinglePost({ post }: PostProps) {
+const SinglePost = ({ post }: SinglePostProps) => {
   const MDXComponent = useMDXComponent(post.body.code);
-
   return (
     <WebWrapper>
       <NextSeo
         title={
-          post.seoTitle && post.seoTitle !== post.title
-            ? `${post.seoTitle}`
-            : `${post.title}`
+          post.seo_title && post.seo_title !== post.title
+            ? `${post.seo_title} | EkomEnyong.com`
+            : `${post.title} | EkomEnyong.com`
         }
         description={
-          post.seoDescription && post.seoDescription !== post.summary
-            ? `${post.seoDescription}`
+          post.seo_description && post.seo_description !== post.summary
+            ? `${post.seo_description}`
             : `${post.summary}`
         }
         canonical={`https://ekomenyong.com/posts/${post.slug}`}
         openGraph={{
           title:
-            post.seoTitle && post.seoTitle !== post.title
-              ? `${post.seoTitle}`
+            post.seo_title && post.seo_title !== post.title
+              ? `${post.seo_title}`
               : `${post.title}`,
           description:
-            post.seoDescription && post.seoDescription !== post.summary
-              ? `${post.seoDescription}`
+            post.seo_description && post.seo_description !== post.summary
+              ? `${post.seo_description}`
               : `${post.summary}`,
           url: `https://ekomenyong.com/posts/${post.slug}`,
           type: 'article',
           site_name: 'EkomEnyong.com',
           locale: 'en_US',
           article: {
-            publishedTime: `${post.publishedAt}`,
-            modifiedTime: `${post.lastmod}`,
+            publishedTime: `${post.publish_date}`,
+            modifiedTime: `${post.last_modified}`,
             tags: [`${post.tags}`],
           },
           images: [
             {
-              url: `https://ekomenyong.com${post.coverImage}`,
+              url: `https://ekomenyong.com${post.cover_image}`,
               alt: `Blog post cover photo for ${post.title}`,
               width: 1200,
               height: 600,
@@ -57,36 +55,40 @@ export default function SinglePost({ post }: PostProps) {
           ],
         }}
         twitter={{
-          handle: '@EkomEnyong',
-          site: '@EkomEnyong',
-          cardType: 'summary_large_image',
+          handle: config.seo.twitter.handle,
+          site: config.seo.twitter.site,
+          cardType: config.seo.twitter.cardType,
         }}
       />
       <ArticleJsonLd
         url={`https://ekomenyong.com/posts/${post.slug}`}
         title={
-          post.seoTitle && post.seoTitle !== post.title
-            ? `${post.seoTitle}`
-            : `${post.title}`
+          post.seo_title && post.seo_title !== post.title
+            ? `${post.seo_title} | EkomEnyong.com`
+            : `${post.title} | EkomEnyong.com`
         }
         headline={`${post.title}`}
-        images={[`https://ekomenyong.com${post.coverImage}`]}
-        datePublished={`${post.publishedAt}`}
-        dateModified={`${post.lastmod}`}
-        publisherLogo={`${config.avatar}`}
-        authorName={`${config.author}`}
+        images={[`https://ekomenyong.com${post.cover_image}`]}
+        datePublished={`${post.publish_date}`}
+        dateModified={`${post.last_modified}`}
+        publisherLogo={`${config.site.avatar}`}
+        authorName={`${config.site.name}`}
         description={
-          post.seoDescription && post.seoDescription !== post.summary
-            ? `${post.seoDescription}`
+          post.seo_description && post.seo_description !== post.summary
+            ? `${post.seo_description}`
             : `${post.summary}`
         }
       />
-      <PostLayout post={post}>
-        <MDXComponent components={components} />
-      </PostLayout>
+      {post.draft !== true && (
+        <PostLayout post={post}>
+          <MDXComponent components={components} />
+        </PostLayout>
+      )}
     </WebWrapper>
   );
-}
+};
+
+export default SinglePost;
 
 export async function getStaticPaths() {
   return {
@@ -96,7 +98,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: ParsedUrlQuery }) {
-  const post = allPosts.find((post) => post.slug === params.slug);
+  const post = allPosts.find(
+    (post) => post.slug === params.slug && post.draft !== true
+  );
 
-  return { props: { post } };
+  return {
+    props: {
+      post,
+    },
+  };
 }

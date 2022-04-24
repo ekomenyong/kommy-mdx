@@ -1,162 +1,163 @@
 import { useState } from 'react';
 import { InferGetStaticPropsType } from 'next';
-import { NextSeo } from 'next-seo';
-import dayjs from 'dayjs';
-
 import { allPosts } from 'contentlayer/generated';
-import { pick } from '@/utils/contentlayer';
+import { pick } from 'contentlayer/client';
+import { Container, KommyLink, WebWrapper } from '@/components';
+import dayjs from 'dayjs';
+import { config } from '@/config';
+import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
-import {
-  Contact,
-  KommyLink,
-  SectionContainer,
-  SectionHeader,
-  Tag,
-  WebWrapper,
-} from '@/components';
-import { RiArrowRightLine } from 'react-icons/ri';
-
-export default function Posts({
-  posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+const Posts = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter((post) => {
-    const concat = post.title + post.summary + post.tags + post.seoDescription;
+    const concat = post.title + post.summary + post.tags;
     return concat.toLowerCase().includes(searchValue.toLowerCase());
   });
+
+  const SEO_TITLE =
+    'From the Desk of Ekom Enyong » Digital, Design, Development Blog';
+  const SEO_DESCRIPTION =
+    'Explore the wandering mind of a seasoned marketing professional and evolving creative developer. Topics include design, development, and all things digital.';
+  const router = useRouter();
+  const CANONICAL_SLUG = router.pathname;
+  console.log(CANONICAL_SLUG);
   return (
-    <WebWrapper>
+    <WebWrapper color="bg-lime-100">
       <NextSeo
-        title="Sincerely, Kommy Digital » Development Blog"
-        titleTemplate="%s | Ekom Enyong"
-        description="Read my most recent thoughts on design, development, user experience, marketing, and all things digital."
-        canonical="https://ekomenyong.com/posts"
+        title={SEO_TITLE}
+        description={SEO_DESCRIPTION}
+        canonical={`${config.seo.canonical}${CANONICAL_SLUG}`}
         openGraph={{
-          title: 'Sincerely, Kommy Digital » Development Blog',
-          description:
-            'Read my most recent thoughts on design, development, user experience, marketing, and all things digital.',
-          url: 'https://ekomenyong.com/posts',
-          type: 'website',
-          locale: 'en_US',
-          site_name: 'EkomEnyong.com',
+          url: config.seo.openGraph.url,
+          title: SEO_TITLE,
+          description: SEO_DESCRIPTION,
+          type: config.seo.openGraph.type,
+          site_name: config.site.sitename,
           images: [
             {
-              url: 'https://ekomenyong.com/images/og-default.jpg',
+              url: config.seo.image,
               width: 1200,
               height: 630,
-              alt: 'Cover image for EkomEnyong.com - Digital Creative » SEO, Design, and Development',
+              alt: `Cover image for ${config.site.sitename}`,
             },
           ],
         }}
         twitter={{
-          handle: '@EkomEnyong',
-          site: '@EkomEnyong',
-          cardType: 'summary_large_image',
+          handle: config.seo.twitter.handle,
+          site: config.seo.twitter.site,
+          cardType: config.seo.twitter.cardType,
         }}
       />
-      <SectionContainer>
-        <div className="pt-20 pb-12">
-          <h1 className="mb-8 text-4xl font-medium uppercase md:text-6xl">
-            Sincerely, <span className="font-bold">Kommy Digital:</span>{' '}
-            <span className="italic font-normal">The blog</span>
-          </h1>
-          <p className="max-w-3xl text-xl text-gray-700 dark:text-gray-300">
-            This blog explores the wandering mind of a seasoned marketing
-            professional and evolving digital creative. Read my most recent
-            thoughts on design, development, user experience, marketing, and all
-            things digital.
-          </p>
-        </div>
-        <div className="relative w-full mb-4 lg:w-2/3 ">
-          <input
-            aria-label="Search all posts"
-            type="text"
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="Search all posts"
-            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md outline-primary-500 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
-          />
-          <svg
-            className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </div>
-      </SectionContainer>
-      <SectionContainer>
-        <hr className="my-20" />
-        {!filteredBlogPosts.length && <p>No posts found.</p>}
-
-        <SectionHeader section="posts" title="My latest writings" />
-
-        {filteredBlogPosts.map((post) => (
-          <div
-            key={post._id}
-            className="flex flex-col pt-8 space-x-0 md:flex-row md:items-baseline md:justify-start md:space-x-4"
-          >
-            <p className="text-sm italic text-gray-500 basis-1/6 dark:text-gray-300">
-              <span>{dayjs(post.publishedAt).format('MMMM DD, YYYY')}</span>
-            </p>
-            <div className="max-w-3xl">
-              <KommyLink href={`/posts/${post.slug}`} className="block mt-2 ">
-                <h3 className="text-3xl font-medium text-gray-900 uppercase hover:underline dark:text-white">
-                  {post.title}
-                </h3>
-              </KommyLink>
-
-              <div className="pt-2">
-                <div className="flex flex-wrap">
-                  {post.tags.map((tag: string) => (
-                    <Tag key={tag} text={tag} />
-                  ))}
-                </div>
-              </div>
-
-              <p className="max-w-2xl my-4 text-lg leading-normal text-gray-700 dark:text-gray-300">
-                {post.summary}
+      <Container>
+        <div className="flex flex-col items-start justify-start pt-40 lg:flex-row">
+          <span className="max-w-sm pt-0 pb-4 mr-0 text-xl font-medium uppercase lg:pb-0 lg:pt-4 lg:mr-40 lg:w-28">
+            insights
+          </span>
+          <div className="flex flex-col items-start">
+            <h1 className="max-w-sm mb-8 text-5xl font-medium uppercase lg:max-w-2xl lg:text-9xl">
+              latest thoughts
+            </h1>
+            <div className="max-w-2xl mb-4 space-y-6 text-2xl">
+              <p>
+                Explore the wandering mind of a seasoned marketing professional and
+                evolving creative developer. Topics include design, development,
+                marketing, and all things digital.
               </p>
-              <KommyLink
-                href={`/posts/${post.slug}`}
-                className="inline-flex items-center justify-start text-base font-medium text-gray-800 uppercase hover:underline dark:text-gray-300"
-                aria-label={`Read "${post.title}"`}
+            </div>
+            <div className="relative w-full mb-4">
+              <input
+                aria-label="Search all posts"
+                type="text"
+                onChange={(e) => setSearchValue(e.target.value)}
+                placeholder="Search all posts"
+                className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-md outline-warning-500 focus:border-warning-500 focus:ring-warning-500"
+              />
+              <svg
+                className="absolute w-5 h-5 text-gray-500 right-3 top-3 dark:text-gray-300"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                Read more <RiArrowRightLine className="w-6 h-6 ml-2" />
-              </KommyLink>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
             </div>
           </div>
-        ))}
-        <hr className="mt-20" />
-      </SectionContainer>
-      <Contact />
+        </div>
+        <div className="py-16">
+          <div className="flex flex-col items-start justify-start lg:flex-row">
+            <span className="max-w-sm pt-0 pb-4 mr-0 text-xl font-medium uppercase lg:pb-0 lg:pt-4 lg:mr-40 lg:w-28"></span>
+            <div className="flex flex-col items-start">
+              <div className="max-w-2xl divide-y">
+                {!filteredBlogPosts.length && (
+                  <p className="font-medium uppercase">
+                    Sorry, no posts were found. Please try your search again.
+                  </p>
+                )}
+                {filteredBlogPosts.map((post, index) => (
+                  <div key={index} className="py-4">
+                    <p className="text-base text-gray-600">
+                      <time
+                        dateTime={
+                          post.last_modified &&
+                          post.last_modified !== post.publish_date
+                            ? post.last_modified
+                            : post.publish_date
+                        }
+                      >
+                        {dayjs(
+                          post.last_modified &&
+                            post.last_modified !== post.publish_date
+                            ? post.last_modified
+                            : post.publish_date
+                        ).format('MMMM DD, YYYY')}
+                      </time>
+                    </p>
+                    <KommyLink href={`/posts/${post.slug}`} className="mt-2">
+                      <h3 className="inline text-2xl font-medium uppercase animated-underline">
+                        {post.title}
+                      </h3>
+                    </KommyLink>
+                    <p className="mt-3 text-xl text-gray-600">{post.summary}</p>
+                    <div className="mt-3"></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
     </WebWrapper>
   );
-}
+};
 
+export default Posts;
 export async function getStaticProps() {
   const posts = await allPosts
     .map((post) =>
       pick(post, [
-        'slug',
-        'title',
-        'summary',
-        'tags',
-        'publishedAt',
-        'body',
-        'seoDescription',
         '_id',
+        'title',
+        'slug',
+        'summary',
+        'publish_date',
+        'last_modified',
+        'body',
+        'tags',
+        'draft',
       ])
     )
+    .filter((post) => post.draft === false)
     .sort(
-      (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+      (a, b) => Number(new Date(b.last_modified)) - Number(new Date(a.last_modified))
     );
-  return { props: { posts } };
+  return {
+    props: { posts },
+  };
 }

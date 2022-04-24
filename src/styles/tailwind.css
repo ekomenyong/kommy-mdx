@@ -10,6 +10,29 @@
     scroll-behavior: smooth;
   }
 
+  h1 {
+    @apply text-3xl font-bold md:text-6xl;
+  }
+
+  h2 {
+    @apply text-2xl font-medium md:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl font-medium md:text-2xl;
+  }
+
+  h4 {
+    @apply text-lg font-medium md:text-xl;
+  }
+  body {
+    @apply text-base md:text-lg text-gray-800;
+  }
+
+  .prose :where(ul li):not(:where([class~='not-prose'] *))::marker {
+    font-size: 24px;
+  }
+
   .jelly:hover {
     animation: jelly 0.5s;
   }
@@ -32,20 +55,33 @@
   details > summary {
     list-style: none;
   }
+}
 
-  .task-list-item::before {
-    @apply hidden;
+@layer utilities {
+  .animated-underline {
+    background-image: linear-gradient(#33333300, #33333300),
+      linear-gradient(to right, #27272a, #27272a, #27272a);
+    background-size: 100% 3px, 0 3px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: 0.3s ease;
+    transition-property: background-size, color, background-color, border-color;
   }
-
-  .task-list-item {
-    @apply list-none;
+  .animated-underline:hover,
+  .animated-underline:focus-visible {
+    background-size: 0 3px, 100% 3px;
   }
-
-  .footnotes {
-    @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
+  .animated-underline-contact {
+    background-image: linear-gradient(#33333300, #33333300),
+      linear-gradient(to right, #27272a, #27272a, #27272a);
+    background-size: 100% 12px, 0 12px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: 0.3s ease;
+    transition-property: background-size, color, background-color, border-color;
   }
-
-  .csl-entry {
-    @apply my-5;
+  .animated-underline-contact:hover,
+  .animated-underline-contact:focus-visible {
+    background-size: 0 12px, 100% 12px;
   }
 }

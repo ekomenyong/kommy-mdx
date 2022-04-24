@@ -58,17 +58,11 @@ export default class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
-          <link
-            rel="preload"
-            href="/fonts/NeueMontreal-BoldItalic.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
           <meta content="#ffffff" name="theme-color" />
           <meta content="#ffffff" name="msapplication-TileColor" />
+          <meta charSet="utf-8" />
         </Head>
-        <body className="text-gray-800 bg-text-gray-50 dark:bg-gray-900 dark:text-gray-200">
+        <body className="bg-white">
           <Main />
           <NextScript />
         </body>
