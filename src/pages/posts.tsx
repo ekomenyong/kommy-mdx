@@ -74,7 +74,7 @@ const Posts = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-md outline-warning-500 focus:border-warning-500 focus:ring-warning-500"
               />
               <svg
-                className="absolute w-5 h-5 text-gray-500 right-3 top-3 dark:text-gray-300"
+                className="absolute w-5 h-5 text-gray-500 right-3 top-3"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
