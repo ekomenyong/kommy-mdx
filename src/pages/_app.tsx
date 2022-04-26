@@ -1,15 +1,15 @@
 import type { AppProps } from 'next/app';
-import { config } from '@/config';
-import PlausibleProvider from 'next-plausible';
 
 import '@/styles/tailwind.css';
 import '@/styles/prism.css';
+import { Analytics } from '@/components';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <PlausibleProvider domain={config.site.plausibleDataDomain}>
+    <>
+      <Analytics />
       <Component {...pageProps} />
-    </PlausibleProvider>
+    </>
   );
 }
 

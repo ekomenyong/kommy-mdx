@@ -1,20 +1,13 @@
 import { config } from '@/config';
 import Script from 'next/script';
-const PlausibleScript = () => {
+const Analytics = () => {
   return (
-    <>
-      <Script
-        strategy="lazyOnload"
-        data-domain={config.site.plausibleDataDomain}
-        src="https://plausible.io/js/plausible.js"
-      />
-      <Script strategy="lazyOnload" id="plausible">
-        {`
-            window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }
-        `}
-      </Script>
-    </>
+    <Script
+      strategy="lazyOnload"
+      data-domain={config.site.plausibleDataDomain}
+      src="/js/script.js"
+    />
   );
 };
 
-export default PlausibleScript;
+export default Analytics;

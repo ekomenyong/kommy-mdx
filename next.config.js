@@ -2,7 +2,6 @@
 
 const withPlugins = require('next-compose-plugins');
 const { withContentlayer } = require('next-contentlayer');
-const { withPlausibleProxy } = require('next-plausible');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
@@ -74,18 +73,18 @@ const nextConfig = {
       },
     ];
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/js/script.js',
-  //       destination: 'https://plausible.io/js/script.js',
-  //     },
-  //     {
-  //       source: '/api/event', // Or '/api/event/' if you have `trailingSlash: true` in this config
-  //       destination: 'https://plausible.io/api/event',
-  //     },
-  //   ];
-  // },
+  async rewrites() {
+    return [
+      {
+        source: '/js/script.js',
+        destination: 'https://plausible.io/js/script.js',
+      },
+      {
+        source: '/api/event', // Or '/api/event/' if you have `trailingSlash: true` in this config
+        destination: 'https://plausible.io/api/event',
+      },
+    ];
+  },
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
     if (!dev && !isServer) {
@@ -101,7 +100,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins(
-  [withContentlayer, withBundleAnalyzer, withPlausibleProxy],
-  nextConfig
-);
+module.exports = withPlugins([withContentlayer, withBundleAnalyzer], nextConfig);
