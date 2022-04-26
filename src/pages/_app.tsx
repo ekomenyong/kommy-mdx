@@ -1,19 +1,16 @@
 import type { AppProps } from 'next/app';
 import { config } from '@/config';
-import { Analytics } from '@/components';
+import PlausibleProvider from 'next-plausible';
 
 import '@/styles/tailwind.css';
 import '@/styles/prism.css';
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 function MyApp({ Component, pageProps }: AppProps) {
-	return (
-		<>
-			{isProduction && config.site.plausibleDataDomain && <Analytics />}
-			<Component {...pageProps} />
-		</>
-	);
+  return (
+    <PlausibleProvider domain={config.site.plausibleDataDomain}>
+      <Component {...pageProps} />
+    </PlausibleProvider>
+  );
 }
 
 export default MyApp;
