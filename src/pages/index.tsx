@@ -25,7 +25,7 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
         canonical={config.seo.canonical}
         openGraph={{
           url: config.seo.openGraph.url,
-          title: config.seo.openGraph.title,
+          title: config.seo.title,
           description: config.seo.openGraph.description,
           type: config.seo.openGraph.type,
           site_name: config.site.sitename,
@@ -54,9 +54,9 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 insights
               </span>
               <div className="flex flex-col items-start">
-                <h1 className="max-w-sm mb-8 text-5xl font-medium uppercase lg:max-w-3xl lg:text-9xl">
+                <h2 className="max-w-sm mb-8 text-5xl font-medium uppercase lg:max-w-3xl lg:text-9xl">
                   latest thoughts
-                </h1>
+                </h2>
 
                 <div className="max-w-3xl divide-y">
                   {posts.slice(0, MAX_DISPLAY).map((post, index) => (

@@ -30,8 +30,8 @@ const SinglePost = ({ post }: SinglePostProps) => {
         openGraph={{
           title:
             post.seo_title && post.seo_title !== post.title
-              ? `${post.seo_title}`
-              : `${post.title}`,
+              ? `${post.seo_title} | EkomEnyong.com`
+              : `${post.title} | EkomEnyong.com`,
           description:
             post.seo_description && post.seo_description !== post.summary
               ? `${post.seo_description}`

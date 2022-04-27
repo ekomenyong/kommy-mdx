@@ -55,9 +55,9 @@ const Posts = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
             insights
           </span>
           <div className="flex flex-col items-start">
-            <h1 className="max-w-sm mb-8 text-5xl font-medium uppercase lg:max-w-2xl lg:text-9xl">
+            <h2 className="max-w-sm mb-8 text-5xl font-medium uppercase lg:max-w-2xl lg:text-9xl">
               latest thoughts
-            </h1>
+            </h2>
             <div className="max-w-2xl mb-4 space-y-6 text-2xl">
               <p>
                 Explore the wandering mind of a seasoned marketing professional and
