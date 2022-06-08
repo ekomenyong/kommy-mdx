@@ -18,7 +18,7 @@ const PostLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
     <Container>
       <article>
         <div className="mx-auto mt-32 mb-16">
-          <header className="flex flex-col items-start justify-start mb-8 text-center lg:mb-16">
+          <header className="flex flex-col items-start justify-start mb-4 lg:text-center lg:mb-16">
             <div className="">
               {/* PAGE TITLE / SUMMARY */}
               {/* DATE / READING TIME */}

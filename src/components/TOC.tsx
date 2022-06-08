@@ -58,9 +58,7 @@ const useIntersectionObserver = (
       rootMargin: '0px 0px -70% 0px',
     });
 
-    const headingElements = Array.from(
-      document.querySelectorAll('.article h2, .article h3')
-    );
+    const headingElements = Array.from(document.querySelectorAll('.article h2'));
 
     headingElements.forEach((element) => observer.observe(element));
 
@@ -131,8 +129,8 @@ const TableOfContents: FC<TOCProps> = ({ source }) => {
                     className={`${
                       heading.id === activeId ? 'font-medium' : 'font-normal'
                     } ${
-                      heading.level === 2 ? 'pl-2' : 'pl-6'
-                    } text-base text-gray-600 last:mb-4 hover:underline`}
+                      heading.level === 2 ? 'pl-2' : 'hidden'
+                    } mb-3 text-base text-gray-600 last:mb-6 hover:underline`}
                     onClick={(e) => {
                       e.preventDefault();
                       document.querySelector(`#${heading.id}`).scrollIntoView({

@@ -136,26 +136,16 @@ const Posts = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
     </WebWrapper>
   );
 };
-
 export default Posts;
+
 export async function getStaticProps() {
   const posts = await allPosts
     .map((post) =>
-      pick(post, [
-        '_id',
-        'title',
-        'slug',
-        'summary',
-        'publish_date',
-        'last_modified',
-        'body',
-        'tags',
-        'draft',
-      ])
+      pick(post, ['_id', 'title', 'slug', 'summary', 'publish_date', 'draft'])
     )
     .filter((post) => post.draft === false)
     .sort(
-      (a, b) => Number(new Date(b.last_modified)) - Number(new Date(a.last_modified))
+      (a, b) => Number(new Date(b.publish_date)) - Number(new Date(a.publish_date))
     );
   return {
     props: { posts },
