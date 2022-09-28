@@ -111,7 +111,15 @@ export default Home;
 export function getStaticProps() {
   const posts = allPosts
     .map((post) =>
-      pick(post, ['_id', 'slug', 'title', 'summary', 'publish_date', 'draft'])
+      pick(post, [
+        '_id',
+        'slug',
+        'title',
+        'summary',
+        'publish_date',
+        'draft',
+        'last_modified',
+      ])
     )
     .filter((post) => post.draft === false)
     .sort(

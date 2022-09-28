@@ -11,7 +11,7 @@ import { useRouter } from 'next/router';
 const Posts = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter((post) => {
-    const concat = post.title + post.summary + post.tags;
+    const concat = post.title + post.summary;
     return concat.toLowerCase().includes(searchValue.toLowerCase());
   });
 
@@ -141,7 +141,15 @@ export default Posts;
 export async function getStaticProps() {
   const posts = await allPosts
     .map((post) =>
-      pick(post, ['_id', 'title', 'slug', 'summary', 'publish_date', 'draft'])
+      pick(post, [
+        '_id',
+        'title',
+        'slug',
+        'summary',
+        'publish_date',
+        'draft',
+        'last_modified',
+      ])
     )
     .filter((post) => post.draft === false)
     .sort(

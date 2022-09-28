@@ -100,4 +100,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins([withContentlayer, withBundleAnalyzer], nextConfig);
+module.exports = withPlugins([[withContentlayer], [withBundleAnalyzer]], nextConfig);
